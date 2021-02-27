@@ -69,7 +69,8 @@
     "yaml",
     "json",
     "python",
-    "java"
+    "java",
+    "go"
   ],
   "coc.preferences.hoverTarget": "float",
 
@@ -131,6 +132,11 @@
     "<cr>": ["expandable?", "expand", "open"],
     "v": "open:vsplit"
   },
+  
+  // prettier
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.tabWidth": 4,
 
   /* "languageserver": { */
   /*   "lua": { */

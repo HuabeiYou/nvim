@@ -29,7 +29,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'ChristianChiarulli/vscode-easymotion'
     Plug 'machakann/vim-highlightedyank'
   else
-
+    " Go Support
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     " Easymotion
     Plug 'easymotion/vim-easymotion'
     " Surround
@@ -51,7 +52,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Closetags
     Plug 'alvan/vim-closetag'
     " Themes
-    Plug 'christianchiarulli/nvcode-color-schemes.vim'
+    Plug 'phanviet/vim-monokai-pro'
+    " Plug 'christianchiarulli/nvcode-color-schemes.vim'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Status Line
@@ -114,7 +116,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Neovim in Browser
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
     " Rainbow brackets
-    " Plug 'luochen1990/rainbow'
+    Plug 'luochen1990/rainbow'
     " Async Linting Engine
     " TODO make sure to add ale config before plugin
     " Plug 'dense-analysis/ale'

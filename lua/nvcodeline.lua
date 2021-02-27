@@ -5,17 +5,17 @@ local gls = gl.section
 gl.short_line_list = {'LuaTree','vista','dbui'}
 
 local colors = {
-  bg = '#282c34',
+  bg = '#2B2B2B',
   yellow = '#fabd2f',
   cyan = '#008080',
-  darkblue = '#081633',
-  green = '#608B4E',
+  darkblue = '#1520A6',
+  green = '#00A86B',
   orange = '#FF8800',
-  purple = '#5d4d7a',
-  magenta = '#d16d9e',
-  grey = '#c0c0c0',
-  blue = '#569CD6',
-  red = '#D16969'
+  purple = '#9864C5',
+  magenta = '#A1045A',
+  grey = '#F0F0F0',
+  blue = '#0492C2',
+  red = '#A91B0D'
 }
 
 local buffer_not_empty = function()
@@ -52,16 +52,16 @@ gls.left[2] = {
   ViMode = {
     provider = function()
       -- auto change color according the vim mode
-      local mode_color = {n = colors.purple, 
-                          i = colors.green,
-                          v = colors.blue,
-                          [''] = colors.blue,
-                          V = colors.blue,
-                          c = colors.purple,
+      local mode_color = {n = colors.green, 
+                          i = colors.blue,
+                          v = colors.darkblue,
+                          [''] = colors.darkblue,
+                          V = colors.darkblue,
+                          c = colors.orange,
                           no = colors.magenta,
-                          s = colors.orange,
-                          S = colors.orange,
-                          [''] = colors.orange,
+                          s = colors.purple,
+                          S = colors.purple,
+                          [''] = colors.purple,
                           ic = colors.yellow,
                           R = colors.red,
                           Rv = colors.red,
@@ -72,8 +72,18 @@ gls.left[2] = {
                           ['r?'] = colors.cyan,
                           ['!']  = colors.red,
                           t = colors.red}
+      local alias = { n = '  NORMAL ',
+                      i = '  INSERT ',
+                      c = '  COMMAND ',
+                      v = '  VISUAL ',
+                      V = '  V-LINE ',
+                     [''] = '  V-BLOCK ',
+                     s = '  SELECT ',
+                     S = '  S-LINE ',
+                     t = '  TERMINAL '
+                   }
       vim.api.nvim_command('hi GalaxyViMode guibg='..mode_color[vim.fn.mode()])
-      return '  NVCode '
+      return alias[vim.fn.mode()]
     end,
     separator = ' ',
     separator_highlight = {colors.yellow,function()
