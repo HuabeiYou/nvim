@@ -63,6 +63,8 @@ function M.config()
       ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
       ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
       ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-e>"] = cmp.mapping({
         i = cmp.mapping.abort(),
@@ -113,7 +115,25 @@ function M.config()
       end,
     },
     sources = {
-      { name = "nvim_lsp" },
+      {
+        name = "nvim_lsp",
+        entry_filter = function(entry, ctx)
+          local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+          if kind == "Snippet" and ctx.prev_context.filetype == "java" then
+            return false
+          end
+
+          if ctx.prev_context.filetype == "markdown" then
+            return true
+          end
+
+          if kind == "Text" then
+            return false
+          end
+
+          return true
+        end,
+      },
       { name = "luasnip" },
       { name = "nvim_lua" },
       { name = "buffer" },
