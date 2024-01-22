@@ -30,4 +30,7 @@ require("lazy").setup("user.plugins", {
     enabled = true,
     notify = false,
   },
+  ui = {
+    border = "single",
+  },
 })

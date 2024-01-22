@@ -29,15 +29,15 @@ return {
 
     local wk = require("which-key")
     wk.register({
-      ["z"] = {
-        name = "zk",
-        c = { ":ZkNew { title = vim.fn.input('Title: ') }<CR>", "Create a new note after asking for its title" },
-        o = { ":ZkNotes { sort = { 'modified' } }<CR>", "Open notes" },
-        s = { ":ZkNotes { sort = { 'modified' }, match = vim.fn.input('Search: ') }<CR>", "Search notes" },
-        t = { ":ZkTags<CR>", "Open notes associated with the selected tags" },
-        b = { ":ZkBacklinks<CR>", "Open notes linking to the current buffer." },
-        l = { ":ZkLinks<CR>", "Open notes linked by the current buffer." },
+      ["<leader>Za"] = {
+        ":ZkNew { title = vim.fn.input('Title: ') }<CR>",
+        "Create a new note",
       },
+      ["<leader>Zo"] = { ":ZkNotes { sort = { 'modified' } }<CR>", "Open notes" },
+      ["<leader>Zf"] = { ":ZkNotes { sort = { 'modified' }, match = vim.fn.input('Find: ') }<CR>", "Find notes" },
+      ["<leader>Zt"] = { ":ZkTags<CR>", "Open notes associated with the selected tags" },
+      ["<leader>Zb"] = { ":ZkBacklinks<CR>", "Open notes linking to the current buffer." },
+      ["<leader>Zl"] = { ":ZkLinks<CR>", "Open notes linked by the current buffer." },
     })
   end,
 }

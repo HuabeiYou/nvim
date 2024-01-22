@@ -23,6 +23,7 @@ function M.config()
       h = { "<cmd>-tabmove<cr>", "Move Left" },
       l = { "<cmd>+tabmove<cr>", "Move Right" },
     },
+    S = { name = "Sessions" },
     T = {
       name = "Test",
       t = { "<cmd>lua require'neotest'.run.run()<cr>", "Test Nearest" },
@@ -31,6 +32,7 @@ function M.config()
       s = { "<cmd>lua require('neotest').run.stop()<cr>", "Test Stop" },
       a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach Test" },
     },
+    Z = { name = "ZK" },
   }
 
   local which_key = require("which-key")
