@@ -7,7 +7,12 @@ function M.config()
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
     [";"] = { "<cmd>tabnew | terminal<CR>", "Term" },
     v = { "<cmd>vsplit<CR>", "Split" },
-    b = { name = "Buffers" },
+    b = {
+      name = "Buffers",
+      c = { "<cmd>bdelete<cr>", "Close Buffer" },
+      n = { "<cmd>bnext<cr>", "Next Buffer" },
+      p = { "<cmd>bprevious<cr>", "Previous Buffer" },
+    },
     d = { name = "Debug" },
     f = { name = "Find" },
     g = { name = "Git" },

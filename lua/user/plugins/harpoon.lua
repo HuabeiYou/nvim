@@ -18,6 +18,11 @@ local function toggle_quick_menu()
 end
 
 function M.config()
+  require("harpoon"):setup({
+    settings = {
+      save_on_toggle = true,
+    },
+  })
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true }
 
