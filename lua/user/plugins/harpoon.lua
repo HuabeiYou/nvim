@@ -21,12 +21,13 @@ function M.config()
   require("harpoon"):setup({
     settings = {
       save_on_toggle = true,
+      sync_on_ui_close = true,
     },
   })
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true }
 
-  keymap("n", "<s-m>", mark_file, opts)
+  keymap("n", "<S-m>", mark_file, opts)
   keymap("n", "<TAB>", toggle_quick_menu, opts)
   keymap("n", "<S-l>", "<cmd>lua require('harpoon'):list():next()<cr>", opts)
   keymap("n", "<S-h>", "<cmd>lua require('harpoon'):list():prev()<cr>", opts)
