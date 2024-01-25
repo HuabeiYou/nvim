@@ -7,14 +7,12 @@ vim.g.maplocalleader = " "
 
 keymap("i", "jk", "<Esc>", opts)
 
-keymap("n", "<C-i>", "<C-i>", opts)
-
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-keymap("n", "<S-tab>", "<c-6>", opts)
+keymap("n", "<S-tab>", "<C-6>", opts)
 
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
@@ -28,9 +26,3 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 keymap("x", "p", [["_dP]])
-
-vim.cmd([[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]])
-vim.cmd([[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]])
--- vim.cmd [[:amenu 10.120 mousemenu.-sep- *]]
-
-vim.api.nvim_set_keymap("t", "<C-;>", "<C-\\><C-n>", opts)
