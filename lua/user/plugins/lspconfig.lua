@@ -124,8 +124,8 @@ function M.config()
   local servers = {
     "lua_ls",
     "cssls",
+    "clangd",
     "html",
-    -- "tsserver",
     "astro",
     "pyright",
     "bashls",
@@ -136,6 +136,7 @@ function M.config()
     "tailwindcss",
     "eslint",
     "gopls",
+    -- "tsserver",
     -- "rust_analyzer",
   }
 
@@ -152,6 +153,13 @@ function M.config()
 
     if server == "lua_ls" then
       require("neodev").setup({})
+    end
+
+    if server == "clangd" then
+      opts.cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+      }
     end
 
     lspconfig[server].setup(opts)
