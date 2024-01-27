@@ -1,12 +1,11 @@
--- https://github.com/mrcjkb/rustaceanvim/tree/master
 local M = {
   "mrcjkb/rustaceanvim",
-  version = "^3",
+  version = "^4", -- Recommended
   ft = { "rust" },
 }
 
 function M.config()
-  local lspconfig = require "user.lspconfig"
+  local lspconfig = require "user.plugins.lspconfig"
   vim.g.rustaceanvim = {
     tools = {},
     server = {

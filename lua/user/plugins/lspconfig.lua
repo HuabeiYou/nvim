@@ -8,20 +8,7 @@ local M = {
   },
 }
 
-local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_buf_set_keymap
-  keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-end
-
 M.on_attach = function(client, bufnr)
-  lsp_keymaps(bufnr)
-
   if client.supports_method("textDocument/inlayHint") then
     vim.lsp.inlay_hint.enable(bufnr, true)
   end
@@ -56,6 +43,26 @@ function M.common_capabilities()
 end
 
 function M.config()
+  -- Use LspAttach autocommand to only map the following keys
+  -- after the language server attaches to the current buffer
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = function(ev)
+      -- Enable completion triggered by <c-x><c-o>
+      vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+      -- Buffer local mappings.
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      local opts = { buffer = ev.buf, noremap = true, silent = true }
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+      vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
+      vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+      vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+    end,
+  })
+
   local wk = require("which-key")
   wk.register({
     ["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -65,7 +72,7 @@ function M.config()
     },
     ["<leader>li"] = { "<cmd>LspInfo<cr>", "Info" },
     ["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-    ["<leader>lh"] = { "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", "Hints" },
+    ["<leader>lh"] = { "<cmd>lua require('user.plugins.lspconfig').toggle_inlay_hints()<cr>", "Hints" },
     ["<leader>lk"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
     ["<leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     ["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
@@ -82,23 +89,7 @@ function M.config()
   local lspconfig = require("lspconfig")
   local icons = require("user.icons")
 
-  local servers = {
-    "lua_ls",
-    "cssls",
-    "html",
-    "astro",
-    "pyright",
-    "bashls",
-    "lemminx",
-    "jsonls",
-    "marksman",
-    -- "tsserver",
-    -- "tailwindcss",
-    -- "eslint",
-    -- "rust_analyzer",
-  }
-
-  local default_diagnostic_config = {
+  vim.diagnostic.config({
     signs = {
       active = true,
       values = {
@@ -120,9 +111,7 @@ function M.config()
       header = "",
       prefix = "",
     },
-  }
-
-  vim.diagnostic.config(default_diagnostic_config)
+  })
 
   for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
@@ -131,6 +120,24 @@ function M.config()
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
   require("lspconfig.ui.windows").default_options.border = "single"
+
+  local servers = {
+    "lua_ls",
+    "cssls",
+    "html",
+    -- "tsserver",
+    "astro",
+    "pyright",
+    "bashls",
+    "lemminx",
+    "jsonls",
+    "yamlls",
+    "marksman",
+    "tailwindcss",
+    "eslint",
+    "gopls",
+    -- "rust_analyzer",
+  }
 
   for _, server in pairs(servers) do
     local opts = {

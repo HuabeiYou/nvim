@@ -21,6 +21,9 @@ keymap("n", "#", "#zz", opts)
 keymap("n", "g*", "g*zz", opts)
 keymap("n", "g#", "g#zz", opts)
 
+keymap("n", "[d", vim.diagnostic.goto_prev)
+keymap("n", "]d", vim.diagnostic.goto_next)
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
