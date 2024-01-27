@@ -18,6 +18,7 @@ function M.config()
     g = { name = "Git" },
     l = { name = "LSP" },
     p = { name = "Plugins" },
+    P = { "<cmd>lua require('telescope').extensions.projects.projects()<CR>", "Projects" },
     t = {
       name = "Tab",
       a = { "<cmd>$tabnew<cr>", "Add Tab" },

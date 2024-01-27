@@ -133,9 +133,9 @@ function M.config()
     "jsonls",
     "yamlls",
     "marksman",
-    "tailwindcss",
-    "eslint",
     "gopls",
+    -- "tailwindcss",
+    -- "eslint",
     -- "tsserver",
     -- "rust_analyzer",
   }
