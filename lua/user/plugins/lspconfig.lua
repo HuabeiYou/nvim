@@ -4,6 +4,7 @@ local M = {
   dependencies = {
     {
       "folke/neodev.nvim",
+      "b0o/schemastore.nvim",
     },
   },
 }
