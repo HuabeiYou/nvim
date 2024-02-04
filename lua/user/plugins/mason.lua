@@ -10,10 +10,11 @@ function M.config()
     "lua_ls",
     "cssls",
     "html",
-    "tsserver",
     "pyright",
     "bashls",
     "jsonls",
+    "yamlls",
+    "marksman",
   }
 
   require("mason").setup({
@@ -24,6 +25,9 @@ function M.config()
 
   require("mason-lspconfig").setup({
     ensure_installed = servers,
+    automatic_installation = {
+      exclude = { "rust_analyzer", "tsserver" },
+    },
   })
 
   local wk = require("which-key")

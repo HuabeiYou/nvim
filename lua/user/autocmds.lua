@@ -81,9 +81,5 @@ vim.api.nvim_create_autocmd("TermOpen", {
     local opts = { buffer = 0 }
     vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
     vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
-    vim.keymap.set("t", "<C-h>", vim.cmd.wincmd("h"), opts)
-    vim.keymap.set("t", "<C-j>", vim.cmd.wincmd("j"), opts)
-    vim.keymap.set("t", "<C-k>", vim.cmd.wincmd("k"), opts)
-    vim.keymap.set("t", "<C-l>", vim.cmd.wincmd("l"), opts)
   end,
 })
