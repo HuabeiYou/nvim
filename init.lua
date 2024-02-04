@@ -18,6 +18,7 @@ local plugins_enabled = {
   "harpoon",
   "leap",
   "dial",
+  "telescope-extra",
   "typescript-tools",
   "tsc",
   "rustaceanvim",
@@ -46,6 +47,9 @@ local plugins_enabled = {
   "zen-mode",
   "zk-nvim",
   "oil",
+  "navic",
+  "navbuddy",
+  "netrw",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
