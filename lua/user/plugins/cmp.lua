@@ -29,8 +29,12 @@ local M = {
     {
       "L3MON4D3/LuaSnip",
       event = "InsertEnter",
+      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      -- install jsregexp (optional!).
+      build = "make install_jsregexp",
       dependencies = {
         "rafamadriz/friendly-snippets",
+        "molleweide/LuaSnip-snippets.nvim",
       },
     },
     {
@@ -45,7 +49,7 @@ local M = {
 function M.config()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
-  require("luasnip/loaders/from_vscode").lazy_load()
+  require("luasnip.loaders.from_vscode").lazy_load()
 
   local check_backspace = function()
     local col = vim.fn.col(".") - 1
@@ -139,7 +143,7 @@ function M.config()
       { name = "buffer" },
       { name = "path" },
       { name = "calc" },
-      { name = "emoji" },
+      -- { name = "emoji" },
       { name = "treesitter" },
       { name = "orgmode" },
       { name = "crates" },
@@ -161,8 +165,8 @@ function M.config()
     window = {
       completion = {
         border = "single",
-        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-        col_offset = -3,
+        -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+        -- col_offset = -3,
         side_padding = 0,
         scrollbar = false,
         scrolloff = 8,

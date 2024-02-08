@@ -120,7 +120,7 @@ function M.config()
       type = "text",
       val = banners[math.random(1, #banners)],
       opts = {
-        hl = "Type",
+        hl = "@variable.parameter",
         shrink_margin = false,
         position = "center",
       },

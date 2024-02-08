@@ -10,6 +10,7 @@ function M.config()
     b = {
       name = "Buffers",
       c = { "<cmd>bdelete<cr>", "Close Buffer" },
+      l = { "<cmd>Telescope buffers previewer=true<cr>", "List Buffer" },
       n = { "<cmd>bnext<cr>", "Next Buffer" },
       p = { "<cmd>bprevious<cr>", "Previous Buffer" },
     },
