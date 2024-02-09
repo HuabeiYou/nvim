@@ -2,7 +2,7 @@ require("user.options")
 require("user.keymaps")
 require("user.autocmds")
 
-local colorscheme = "tokyonight"
+local colorscheme = "gruvbox"
 
 local plugins_enabled = {
   "colorscheme",
@@ -52,6 +52,7 @@ local plugins_enabled = {
   "netrw",
   "undotree",
   "cloak",
+  "fidget",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

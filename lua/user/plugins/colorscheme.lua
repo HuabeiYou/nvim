@@ -1,7 +1,6 @@
 local M = {
   {
     "folke/tokyonight.nvim",
-    priority = 1000,
     opts = function()
       return {
         style = "moon",
@@ -18,29 +17,6 @@ local M = {
           "startuptime",
           "Outline",
         },
-        on_colors = function(c)
-          -- local hsluv = require("tokyonight.hsluv")
-          -- local function randomColor(color)
-          --   if color ~= "NONE" then
-          --     local hsl = hsluv.hex_to_hsluv(color)
-          --     hsl[1] = math.random(0, 360)
-          --     return hsluv.hsluv_to_hex(hsl)
-          --   end
-          --   return color
-          -- end
-          -- local function set(colors)
-          --   if type(colors) == "table" then
-          --     for k, v in pairs(colors) do
-          --       if type(v) == "string" then
-          --         colors[k] = randomColor(v)
-          --       elseif type(v) == "table" then
-          --         set(v)
-          --       end
-          --     end
-          --   end
-          -- end
-          -- set(c)
-        end,
         on_highlights = function(hl, c)
           -- hl.CursorLineNr = { fg = c.orange, bold = true }
           -- hl.LineNr = { fg = c.orange, bold = true }
@@ -147,21 +123,22 @@ local M = {
   },
   {
     "ellisonleao/gruvbox.nvim",
-    -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    -- priority = 1000, -- make sure to load this before all the other start plugins
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
+      local p = require("gruvbox").palette
       require("gruvbox").setup({
         inverse = true, -- invert background for search, diffs, statuslines and errors
         contrast = "hard", -- can be "hard", "soft" or empty string
-        palette_overrides = {
-          neutral_red = "#fb4934",
-          neutral_green = "#b8bb26",
-          neutral_yellow = "#fabd2f",
-          neutral_blue = "#83a598",
-          neutral_purple = "#d3869b",
-          neutral_aqua = "#8ec07c",
-          neutral_orange = "#fe8019",
-        },
+        -- palette_overrides = {
+        --   neutral_red = "#fb4934",
+        --   neutral_green = "#b8bb26",
+        --   neutral_yellow = "#fabd2f",
+        --   neutral_blue = "#83a598",
+        --   neutral_purple = "#d3869b",
+        --   neutral_aqua = "#8ec07c",
+        --   neutral_orange = "#fe8019",
+        -- },
         overrides = {
           Function = {
             link = "GruvboxYellowBold",
@@ -170,9 +147,8 @@ local M = {
             link = "GruvboxRed",
           },
           IndentBlanklineContextChar = { link = "Normal" },
-          -- ["@variable.builtin"] = { link = "GruvboxPurple" },
-          -- ["@punctuation.bracket"] = { link = "Normal" },
-          -- ["@punctuation.delimiter"] = { link = "Normal" },
+          ["@punctuation.bracket"] = { link = "Normal" },
+          ["@punctuation.delimiter"] = { link = "Normal" },
           SignColumn = { link = "Normal" },
           GruvboxGreenSign = { bg = "" },
           GruvboxOrangeSign = { bg = "" },
@@ -181,8 +157,11 @@ local M = {
           GruvboxRedSign = { bg = "" },
           GruvboxBlueSign = { bg = "" },
           GruvboxAquaSign = { bg = "" },
+          TabLine = { bg = p.dark0, fg = p.gray }, -- tab pages line, not active tab page label
+          TabLineFill = { bg = p.dark0 }, -- tab pages line, where there are no labels
+          TabLineSel = { fg = p.bright_aqua, bg = p.dark2 }, -- tab pages line, active tab page label
         },
-        transparent_mode = true,
+        transparent_mode = false,
       })
     end,
   },
