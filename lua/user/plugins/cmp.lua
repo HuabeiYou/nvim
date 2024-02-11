@@ -7,10 +7,6 @@ local M = {
       event = "InsertEnter",
     },
     {
-      "hrsh7th/cmp-emoji",
-      event = "InsertEnter",
-    },
-    {
       "hrsh7th/cmp-buffer",
       event = "InsertEnter",
     },
@@ -143,7 +139,6 @@ function M.config()
       { name = "buffer" },
       { name = "path" },
       { name = "calc" },
-      -- { name = "emoji" },
       { name = "treesitter" },
       { name = "orgmode" },
       { name = "crates" },
