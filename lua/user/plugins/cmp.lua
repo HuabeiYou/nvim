@@ -160,7 +160,7 @@ function M.config()
     },
     window = {
       completion = {
-        border = "single",
+        border = "rounded",
         -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
         -- col_offset = -3,
         side_padding = 0,
@@ -168,7 +168,7 @@ function M.config()
         scrolloff = 8,
       },
       documentation = {
-        border = "single",
+        border = "rounded",
       },
     },
   })

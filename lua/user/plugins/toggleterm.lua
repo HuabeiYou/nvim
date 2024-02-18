@@ -24,7 +24,7 @@ function M.config()
     close_on_exit = true, -- close the terminal window when the process exits
     shell = vim.o.shell,
     float_opts = {
-      border = "single",
+      border = "rounded",
       winblend = 0,
       highlights = {
         border = "Normal",

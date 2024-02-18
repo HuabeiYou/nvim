@@ -16,7 +16,7 @@ function M.config()
   local actions = require("nvim-navbuddy.actions")
   navbuddy.setup({
     window = {
-      border = "single", -- "rounded", "double", "solid", "none"
+      border = "rounded", -- "rounded", "double", "solid", "none"
       -- or an array with eight chars building up the border in a clockwise fashion
       -- starting with the top-left corner. eg: { "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" }.
       size = { height = "40%", width = "75%" }, -- Or table format example: { height = "40%", width = "100%"}

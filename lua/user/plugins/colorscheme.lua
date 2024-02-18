@@ -5,7 +5,7 @@ local M = {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require("monokai-pro").setup({
-        filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
+        filter = "pro", -- classic | octagon | pro | machine | ristretto | spectrum
       })
     end,
   },

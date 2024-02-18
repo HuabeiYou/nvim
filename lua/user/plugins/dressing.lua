@@ -22,7 +22,7 @@ function M.config()
 
       -- These are passed to nvim_open_win
       -- anchor = "SW",
-      border = "single",
+      border = "rounded",
       -- 'editor' and 'win' will default to being centered
       relative = "cursor",
 
@@ -63,7 +63,7 @@ function M.config()
         size = nil,
         relative = "editor",
         border = {
-          style = "single",
+          style = "rounded",
         },
         buf_options = {
           swapfile = false,
@@ -82,7 +82,7 @@ function M.config()
       builtin = {
         -- These are passed to nvim_open_win
         -- anchor = "NW",
-        border = "single",
+        border = "rounded",
         -- 'editor' and 'win' will default to being centered
         relative = "editor",
 

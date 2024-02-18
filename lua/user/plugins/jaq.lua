@@ -44,7 +44,7 @@ function M.config()
     ui = {
       float = {
         -- See ':h nvim_open_win'
-        border = "single",
+        border = "rounded",
 
         -- See ':h winhl'
         winhl = "Normal",

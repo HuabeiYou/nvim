@@ -62,7 +62,7 @@ function M.config()
       },
     },
     window = {
-      border = "single",
+      border = "rounded",
       position = "bottom",
       padding = { 2, 2, 2, 2 },
     },

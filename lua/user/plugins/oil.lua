@@ -102,7 +102,7 @@ function M.config()
       padding = 2,
       max_width = 90,
       max_height = 60,
-      border = "single",
+      border = "rounded",
       win_options = {
         winblend = 0,
       },
