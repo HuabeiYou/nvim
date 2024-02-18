@@ -2,8 +2,6 @@ require("user.options")
 require("user.keymaps")
 require("user.autocmds")
 
-local colorscheme = "kanagawa"
-
 local plugins_enabled = {
   "colorscheme",
   "treesitter",
@@ -22,9 +20,9 @@ local plugins_enabled = {
   "typescript-tools",
   "tsc",
   "rustaceanvim",
-  "nvimtree",
-  "oil",
   "devicons",
+  "oil",
+  "toggleterm",
   "gitsigns",
   "alpha",
   "lualine",
@@ -39,7 +37,6 @@ local plugins_enabled = {
   "eyeliner",
   "dressing",
   "neogit",
-  "neoscroll",
   "trouble",
   "sleuth",
   "surround",
@@ -47,14 +44,12 @@ local plugins_enabled = {
   "table-mode",
   "zen-mode",
   "zk-nvim",
-  "oil",
   "navic",
   "navbuddy",
-  "netrw",
   "undotree",
   "cloak",
   "fidget",
-  "rooter",
+  -- "mini-base16",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -96,9 +91,4 @@ require("lazy").setup({
   },
 })
 
-local ok, _ = pcall(require, colorscheme)
-if not ok then
-  vim.cmd([[colorscheme habamax]])
-else
-  vim.cmd("colorscheme " .. colorscheme)
-end
+vim.cmd([[colorscheme monokai-pro]])

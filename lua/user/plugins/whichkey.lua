@@ -5,7 +5,7 @@ local M = {
 function M.config()
   local mappings = {
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    -- [";"] = { "<cmd>$tabnew | terminal<CR>", "Term" },
+    [";"] = { "<cmd>ToggleTerm direction=horizontal<CR>", "Term" },
     v = { "<cmd>vsplit<CR>", "Split" },
     b = {
       name = "Buffers",

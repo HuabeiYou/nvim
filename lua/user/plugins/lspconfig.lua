@@ -90,15 +90,16 @@ function M.config()
   local lspconfig = require("lspconfig")
   local icons = require("user.icons")
 
+  local diagnostic_sign_values = {
+    { name = "DiagnosticSignError", text = icons.diagnostics.Error },
+    { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+    { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+    { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+  }
   vim.diagnostic.config({
     signs = {
       active = true,
-      values = {
-        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
-      },
+      values = diagnostic_sign_values,
     },
     virtual_text = false,
     update_in_insert = false,
@@ -114,7 +115,7 @@ function M.config()
     },
   })
 
-  for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
+  for _, sign in ipairs(diagnostic_sign_values) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 

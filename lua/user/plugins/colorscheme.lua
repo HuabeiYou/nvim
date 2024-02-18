@@ -1,8 +1,20 @@
 local M = {
   {
+    "loctvl842/monokai-pro.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("monokai-pro").setup({
+        filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
+      })
+    end,
+  },
+  {
     "folke/tokyonight.nvim",
-    opts = function()
-      return {
+    -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    -- priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("tokyonight").setup({
         style = "moon",
         -- transparent = true,
         -- styles = {
@@ -22,22 +34,22 @@ local M = {
           -- hl.LineNr = { fg = c.orange, bold = true }
           -- hl.LineNrAbove = { fg = c.fg_gutter }
           -- hl.LineNrBelow = { fg = c.fg_gutter }
-          -- local prompt = "#2d3149"
-          -- hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
-          -- hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
-          -- hl.TelescopePromptNormal = { bg = prompt }
-          -- hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
-          -- hl.TelescopePromptTitle = { bg = c.fg_gutter, fg = c.orange }
-          -- hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
-          -- hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
+          local prompt = "#2d3149"
+          hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
+          hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
+          hl.TelescopePromptNormal = { bg = prompt }
+          hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
+          hl.TelescopePromptTitle = { bg = c.fg_gutter, fg = c.orange }
+          hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
+          hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
         end,
-      }
+      })
     end,
   },
   {
     "rebelot/kanagawa.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    -- priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- Default options:
       require("kanagawa").setup({
@@ -77,13 +89,11 @@ local M = {
   },
   {
     "ellisonleao/gruvbox.nvim",
-    -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    -- priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       local p = require("gruvbox").palette
       require("gruvbox").setup({
         inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = "hard", -- can be "hard", "soft" or empty string
+        contrast = "", -- can be "hard", "soft" or empty string
         -- palette_overrides = {
         --   neutral_red = "#fb4934",
         --   neutral_green = "#b8bb26",
@@ -94,9 +104,6 @@ local M = {
         --   neutral_orange = "#fe8019",
         -- },
         overrides = {
-          -- Macro = {
-          --   link = "GruvboxRed",
-          -- },
           Function = {
             link = "GruvboxYellow",
           },
@@ -118,9 +125,6 @@ local M = {
         transparent_mode = false,
       })
     end,
-  },
-  {
-    "LunarVim/darkplus.nvim",
   },
 }
 

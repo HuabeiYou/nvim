@@ -163,10 +163,10 @@ M.config = function()
       hl = theme.fill,
     }
   end)
-  vim.keymap.set("n", [[<C-\>]], "<cmd>$tabnew | terminal<CR>", {
-    noremap = true,
-    silent = true,
-  })
+  -- vim.keymap.set("n", [[<C-\>]], "<cmd>$tabnew | terminal<CR>", {
+  --   noremap = true,
+  --   silent = true,
+  -- })
 end
 
 return M
