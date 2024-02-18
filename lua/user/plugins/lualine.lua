@@ -18,7 +18,9 @@ function M.config()
   }
 
   local clients_lsp = function()
-    local clients = vim.lsp.get_active_clients()
+    local clients = vim.lsp.get_clients({
+      bufnr = vim.api.nvim_get_current_buf(),
+    })
     if next(clients) == nil then
       return ""
     end
