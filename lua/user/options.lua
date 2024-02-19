@@ -26,7 +26,7 @@ vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2 -- insert 2 spaces for a tab
 vim.opt.cursorline = true -- highlight the current line
 vim.opt.number = true -- set numbered lines
-vim.opt.laststatus = 3
+vim.opt.laststatus = 3 -- global status bar
 vim.opt.showcmd = false
 vim.opt.ruler = false
 vim.opt.relativenumber = true -- set relative numbered lines
@@ -50,9 +50,12 @@ vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 
 if vim.g.neovide then
-  vim.g.neovide_theme = 'auto'
+  vim.g.neovide_theme = "auto"
   vim.g.neovide_cursor_animation_length = 0
   vim.g.neovide_cursor_trail_size = 0
   vim.g.neovide_cursor_animate_in_insert_mode = false
   vim.g.neovide_cursor_animate_command_line = false
 end
+
+-- remove status bar
+-- vim.opt.laststatus = 0

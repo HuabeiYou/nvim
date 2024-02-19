@@ -25,7 +25,8 @@ local plugins_enabled = {
   "toggleterm",
   "gitsigns",
   "alpha",
-  "lualine",
+  -- "lualine",
+  "heirline",
   "tabby",
   "bqf",
   "matchup",
@@ -90,5 +91,3 @@ require("lazy").setup({
     border = "rounded",
   },
 })
-
-vim.cmd([[colorscheme monokai-pro]])
