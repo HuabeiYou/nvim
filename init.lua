@@ -51,6 +51,7 @@ local plugins_enabled = {
   "cloak",
   "fidget",
   -- "mini-base16",
+  "neogen"
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

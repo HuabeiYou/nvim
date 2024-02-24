@@ -9,6 +9,7 @@ return {
     local colors = {
       bright_bg = utils.get_highlight("Folded").bg,
       bright_fg = utils.get_highlight("Folded").fg,
+      muted_fg = utils.get_highlight("Comment").fg,
       red = utils.get_highlight("DiagnosticError").fg,
       dark_red = utils.get_highlight("DiffDelete").bg,
       green = utils.get_highlight("String").fg,
@@ -150,7 +151,8 @@ return {
           self.lfilename = "[No Name]"
         end
       end,
-      hl = { fg = utils.get_highlight("Directory").fg },
+      -- hl = { fg = utils.get_highlight("Directory").fg },
+      hl = { fg = "muted_fg" },
 
       flexible = 2,
 
@@ -340,7 +342,7 @@ return {
         local cwd = vim.fn.getcwd(0)
         self.cwd = vim.fn.fnamemodify(cwd, ":~")
       end,
-      hl = { fg = "blue", bold = true },
+      hl = { fg = "muted_fg", bold = true },
 
       flexible = 1,
 
@@ -371,10 +373,10 @@ return {
       WorkDir,
       FileNameBlock,
       Space,
-      Git,
-      Space,
       Diagnostics,
       Align,
+      Git,
+      Space,
       LSPActive,
       Space,
       Ruler,

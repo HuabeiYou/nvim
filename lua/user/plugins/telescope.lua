@@ -2,18 +2,70 @@ local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      lazy = true,
+      cond = function()
+        return vim.fn.executable("make") == 1
+      end,
+    },
   },
 }
 
 function M.config()
+  -- Telescope live_grep in git root
+  -- Function to find the git root directory based on the current buffer's path
+  local function find_git_root()
+    -- Use the current buffer's path as the starting point for the git search
+    local current_file = vim.api.nvim_buf_get_name(0)
+    local current_dir
+    local cwd = vim.fn.getcwd()
+    -- If the buffer is not associated with a file, return nil
+    if current_file == "" then
+      current_dir = cwd
+    else
+      -- Extract the directory from the current file's path
+      current_dir = vim.fn.fnamemodify(current_file, ":h")
+    end
+
+    -- Find the Git root directory from the current file's path
+    local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
+    if vim.v.shell_error ~= 0 then
+      print("Not a git repository. Searching on current working directory")
+      return cwd
+    end
+    return git_root
+  end
+
+  -- Custom live_grep function to search in git root
+  local function live_grep_git_root()
+    local git_root = find_git_root()
+    if git_root then
+      require("telescope.builtin").live_grep({
+        search_dirs = { git_root },
+      })
+    end
+  end
+  vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
+
+  local function find_file_git_root()
+    local git_root = find_git_root()
+    if git_root then
+      require("telescope.builtin").find_files({
+        search_dirs = { git_root },
+      })
+    end
+  end
+  vim.api.nvim_create_user_command("FindFileGitRoot", find_file_git_root, {})
+
   local wk = require("which-key")
   wk.register({
-    ["<leader>fb"] = { "<cmd>Telescope buffers previewer=false<cr>", "Find buffers" },
+    ["<leader>fb"] = { "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", "Find buffers" },
     ["<leader>fc"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find files" },
+    ["<leader>ff"] = { "<cmd>FindFileGitRoot<cr>", "Find files" },
     ["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-    ["<leader>fw"] = { "<cmd>Telescope live_grep<cr>", "Find Words" },
+    ["<leader>fw"] = { "<cmd>LiveGrepGitRoot<cr>", "Find Words" },
     ["<leader>fg"] = { "<cmd>Telescope git_branches<cr>", "Checkout git branch" },
     ["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
     ["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
