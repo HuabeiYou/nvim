@@ -37,7 +37,7 @@ return {
       -- Directory where global sessions are stored (use `''` to disable)
       directory = "~/.vim/sessions", --<"session" subdir of user data directory from |stdpath()|>,
       -- File for local session (use `''` to disable)
-      file = "", -- 'Session.vim',
+      file = "Session.vim",
     })
 
     local starter = require("mini.starter")
@@ -145,12 +145,18 @@ return {
     highlight_both("Identifier", { fg = { gui = palette.base06, cterm = cterm_palette.base06 } })
     highlight_both("LineNrAbove", { fg = { gui = palette.base02, cterm = cterm_palette.base02 } })
     highlight_both("CursorLineNr", { fg = { gui = palette.base06, cterm = cterm_palette.base06 } })
+    highlight_both("CursorLineSign", {})
     highlight_both("LineNrBelow", { fg = { gui = palette.base02, cterm = cterm_palette.base02 } })
     highlight_both("SignColumn", { fg = { gui = palette.base06, cterm = cterm_palette.base06 } })
     highlight_both("GitSignsAdd", { fg = { gui = palette.base0B, cterm = cterm_palette.base0B } })
     highlight_both("GitSignsUntracked", { fg = { gui = palette.base0D, cterm = cterm_palette.base0D } })
     highlight_both("GitSignsDelete", { fg = { gui = palette.base08, cterm = cterm_palette.base08 } })
     highlight_both("GitSignsChange", { fg = { gui = palette.base0E, cterm = cterm_palette.base0E } })
+    highlight_both("DiagnosticFloatingError", { fg = { gui = palette.base08, cterm = cterm_palette.base08 } })
+    highlight_both("DiagnosticFloatingWarn", { fg = { gui = palette.base0E, cterm = cterm_palette.base0E } })
+    highlight_both("DiagnosticFloatingOk", { fg = { gui = palette.base0B, cterm = cterm_palette.base0B } })
+    highlight_both("DiagnosticFloatingInfo", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
+    highlight_both("DiagnosticFloatingHint", { fg = { gui = palette.base0D, cterm = cterm_palette.base0D } })
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
