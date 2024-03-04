@@ -2,8 +2,8 @@ local M = {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
     config = function()
       require("catppuccin").setup({
         flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -70,7 +70,7 @@ local M = {
         },
       })
       -- setup must be called before loading
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
   {
@@ -108,6 +108,7 @@ local M = {
           hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
         end,
       })
+      -- vim.cmd.colorscheme("tokyonight")
     end,
   },
   {
@@ -149,10 +150,13 @@ local M = {
           light = "lotus",
         },
       })
+      -- vim.cmd.colorscheme("kanagawa")
     end,
   },
   {
     "ellisonleao/gruvbox.nvim",
+    -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    -- priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       local p = require("gruvbox").palette
       require("gruvbox").setup({
@@ -188,6 +192,7 @@ local M = {
         },
         transparent_mode = false,
       })
+      -- vim.cmd.colorscheme("gruvbox")
     end,
   },
 }

@@ -38,3 +38,7 @@ keymap("x", "p", [["_dP]])
 
 -- Delete without copying to the system clipboard
 keymap({ "n", "v" }, "<leader>d", [["_d]])
+
+-- Emacs-style insert mode
+keymap({ "i" }, "<C-f>", "<Right>", opts)
+keymap({ "i" }, "<C-b>", "<Left>", opts)

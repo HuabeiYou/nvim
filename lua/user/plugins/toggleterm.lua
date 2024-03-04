@@ -20,7 +20,7 @@ function M.config()
     start_in_insert = true,
     insert_mappings = true, -- whether or not the open mapping applies in insert mode
     persist_size = false,
-    direction = "float",
+    direction = "tab",
     close_on_exit = true, -- close the terminal window when the process exits
     shell = vim.o.shell,
     float_opts = {

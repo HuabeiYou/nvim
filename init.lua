@@ -24,9 +24,6 @@ local plugins_enabled = {
   "oil",
   "toggleterm",
   "gitsigns",
-  "alpha",
-  -- "lualine",
-  "heirline",
   "tabby",
   "bqf",
   "matchup",
@@ -34,13 +31,11 @@ local plugins_enabled = {
   "comment",
   "todo-comments",
   "colorizer",
-  "illuminate",
   "eyeliner",
   "dressing",
   "neogit",
   "trouble",
   "sleuth",
-  "surround",
   "orgmode",
   "table-mode",
   "zen-mode",
@@ -50,8 +45,8 @@ local plugins_enabled = {
   "undotree",
   "cloak",
   "fidget",
-  -- "mini-base16",
-  "neogen"
+  "mini",
+  "neogen",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

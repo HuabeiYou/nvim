@@ -10,6 +10,7 @@ local M = {
         return vim.fn.executable("make") == 1
       end,
     },
+    -- { "nvim-telescope/telescope-ui-select.nvim" },
   },
 }
 
@@ -64,12 +65,17 @@ function M.config()
     ["<leader>fb"] = { "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", "Find buffers" },
     ["<leader>fc"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     ["<leader>ff"] = { "<cmd>FindFileGitRoot<cr>", "Find files" },
+    ["<leader>fk"] = { "<cmd>Telescope keymaps<cr>", "Find keymaps" },
     ["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
     ["<leader>fw"] = { "<cmd>LiveGrepGitRoot<cr>", "Find Words" },
+    ["<leader>fs"] = { "<cmd>Telescope grep_string<cr>", "Find the string under cursor" },
     ["<leader>fg"] = { "<cmd>Telescope git_branches<cr>", "Checkout git branch" },
     ["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
     ["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
     ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+  })
+  wk.register({
+    ["<leader>fs"] = { "<cmd>Telescope grep_string<cr>", "Find the visual selection", mode = "v" },
   })
 
   local icons = require("user.icons")
@@ -96,23 +102,27 @@ function M.config()
         "--glob=!.git/",
       },
 
-      mappings = {
-        i = {
-          ["<C-n>"] = actions.move_selection_next,
-          ["<C-p>"] = actions.move_selection_previous,
-
-          ["<C-j>"] = actions.cycle_history_next,
-          ["<C-k>"] = actions.cycle_history_prev,
-        },
-        n = {
-          ["<esc>"] = actions.close,
-          ["j"] = actions.move_selection_next,
-          ["k"] = actions.move_selection_previous,
-          ["q"] = actions.close,
-        },
-      },
+      -- mappings = {
+      --   i = {
+      --     ["<C-n>"] = actions.move_selection_next,
+      --     ["<C-p>"] = actions.move_selection_previous,
+      --
+      --     ["<C-j>"] = actions.cycle_history_next,
+      --     ["<C-k>"] = actions.cycle_history_prev,
+      --   },
+      --   n = {
+      --     ["<esc>"] = actions.close,
+      --     ["j"] = actions.move_selection_next,
+      --     ["k"] = actions.move_selection_previous,
+      --     ["q"] = actions.close,
+      --   },
+      -- },
     },
     pickers = {
+      help_tags = {
+        theme = "dropdown",
+      },
+
       live_grep = {
         theme = "dropdown",
       },
@@ -176,9 +186,13 @@ function M.config()
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
+      -- ["ui-select"] = {
+      --   require("telescope.themes").get_dropdown(),
+      -- },
     },
   })
-  require("telescope").load_extension("fzf")
+  pcall(require("telescope").load_extension, "fzf")
+  -- pcall(require("telescope").load_extension, "ui-select")
 end
 
 return M
