@@ -36,11 +36,11 @@ return {
     local starter = require("mini.starter")
     starter.setup({
       evaluate_single = true,
-      header = table.concat(require("fortune").get_fortune()),
-      footer = "",
+      footer = table.concat(require("fortune").get_fortune()),
+      header = "",
       items = {
         new_section("Find file", "Telescope find_files", "Telescope"),
-        new_section("Open project", "[[lua require('telescope').extensions.projects.projects()]]", "Telescope"),
+        new_section("Projects", "[[lua require('telescope').extensions.projects.projects()]]", "Telescope"),
         new_section("Recent files", "Telescope oldfiles", "Telescope"),
         new_section("New file", "ene | startinsert", "Built-in"),
         new_section("Quit", "qa", "Built-in"),
@@ -142,6 +142,16 @@ return {
     highlight_both("DiagnosticFloatingInfo", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
     highlight_both("DiagnosticFloatingHint", { fg = { gui = palette.base0D, cterm = cterm_palette.base0D } })
     highlight_both("TelescopeBorder", { fg = { gui = palette.base05, cterm = cterm_palette.base05 } })
+    highlight_both("MiniStatuslineModeNormal", {
+      fg = { gui = palette.base00, cterm = cterm_palette.base00 },
+      bg = { gui = palette.base04, cterm = cterm_palette.base04 },
+      attr = "bold",
+    })
+    highlight_both("MiniStatuslineModeOther", {
+      fg = { gui = palette.base00, cterm = cterm_palette.base00 },
+      bg = { gui = palette.base0C, cterm = cterm_palette.base0C },
+      attr = "bold",
+    })
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
