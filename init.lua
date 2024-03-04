@@ -46,6 +46,7 @@ local plugins_enabled = {
   "cloak",
   "fidget",
   "mini",
+  "persistence",
   "neogen",
 }
 

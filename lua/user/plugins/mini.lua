@@ -29,39 +29,23 @@ return {
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require("mini.surround").setup()
 
-    require("mini.sessions").setup({
-      -- Whether to read latest session if Neovim opened without file arguments
-      autoread = false,
-      -- Whether to write current session before quitting Neovim
-      autowrite = true,
-      -- Directory where global sessions are stored (use `''` to disable)
-      directory = "~/.vim/sessions", --<"session" subdir of user data directory from |stdpath()|>,
-      -- File for local session (use `''` to disable)
-      file = "", -- Session.vim
-    })
+    local new_section = function(name, action, section)
+      return { name = name, action = action, section = section }
+    end
 
     local starter = require("mini.starter")
     starter.setup({
-      -- evaluate_single = true,
-      items = {
-        starter.sections.sessions(77, true),
-        starter.sections.builtin_actions(),
-      },
-      content_hooks = {
-        function(content)
-          local blank_content_line = { { type = "empty", string = "" } }
-          local section_coords = starter.content_coords(content, "section")
-          -- Insert backwards to not affect coordinates
-          for i = #section_coords, 1, -1 do
-            table.insert(content, section_coords[i].line + 1, blank_content_line)
-          end
-          return content
-        end,
-        starter.gen_hook.adding_bullet("» "),
-        starter.gen_hook.aligning("center", "center"),
-      },
+      evaluate_single = true,
       header = table.concat(require("fortune").get_fortune()),
       footer = "",
+      items = {
+        new_section("Find file", "Telescope find_files", "Telescope"),
+        new_section("Open project", "[[lua require('telescope').extensions.projects.projects()]]", "Telescope"),
+        new_section("Recent files", "Telescope oldfiles", "Telescope"),
+        new_section("New file", "ene | startinsert", "Built-in"),
+        new_section("Quit", "qa", "Built-in"),
+        new_section("Session restore", [[lua require("persistence").load()]], "Session"),
+      },
     })
 
     -- Simple and easy statusline.
