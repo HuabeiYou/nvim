@@ -37,7 +37,7 @@ return {
       -- Directory where global sessions are stored (use `''` to disable)
       directory = "~/.vim/sessions", --<"session" subdir of user data directory from |stdpath()|>,
       -- File for local session (use `''` to disable)
-      file = "Session.vim",
+      file = "", -- Session.vim
     })
 
     local starter = require("mini.starter")
@@ -157,6 +157,7 @@ return {
     highlight_both("DiagnosticFloatingOk", { fg = { gui = palette.base0B, cterm = cterm_palette.base0B } })
     highlight_both("DiagnosticFloatingInfo", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
     highlight_both("DiagnosticFloatingHint", { fg = { gui = palette.base0D, cterm = cterm_palette.base0D } })
+    highlight_both("TelescopeBorder", { fg = { gui = palette.base05, cterm = cterm_palette.base05 } })
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
