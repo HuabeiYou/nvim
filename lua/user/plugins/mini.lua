@@ -126,7 +126,7 @@ return {
       vim.cmd(command)
     end
 
-    highlight_both("Identifier", { fg = { gui = palette.base06, cterm = cterm_palette.base06 } })
+    highlight_both("Identifier", { fg = { gui = palette.base0F, cterm = cterm_palette.base0F } })
     highlight_both("LineNrAbove", { fg = { gui = palette.base02, cterm = cterm_palette.base02 } })
     highlight_both("CursorLineNr", { fg = { gui = palette.base06, cterm = cterm_palette.base06 } })
     highlight_both("CursorLineSign", {})
