@@ -5,7 +5,14 @@ local M = {
     build = ":TSUpdate",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "nvim-treesitter/nvim-treesitter-context",
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+          vim.keymap.set("n", "[c", function()
+            require("treesitter-context").go_to_context(vim.v.count1)
+          end, { silent = true })
+        end,
+      },
     },
     config = function()
       require("nvim-treesitter.configs").setup({
