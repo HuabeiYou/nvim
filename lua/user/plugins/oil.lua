@@ -61,7 +61,6 @@ function M.config()
     -- Set to `false` to remove a keymap
     -- See :help oil-actions for a list of all available actions
     keymaps = {
-      ["q"] = "actions.close",
       ["<leader>e"] = "actions.close",
       ["g?"] = "actions.show_help",
       ["<CR>"] = "actions.select",

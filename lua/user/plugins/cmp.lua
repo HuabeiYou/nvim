@@ -42,7 +42,7 @@ function M.config()
     mapping = cmp.mapping.preset.insert({
       ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i", "c" }),
       ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i", "c" }),
-      ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
+      -- ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
       -- Accept ([y]es) the completion.
       --  This will auto-import if your LSP supports it.
       --  This will expand snippets if the LSP sent a snippet.
@@ -84,6 +84,8 @@ function M.config()
       }),
     },
     sources = {
+      { name = "luasnip" },
+      { name = "buffer" },
       {
         name = "nvim_lsp",
         entry_filter = function(entry, ctx)
@@ -100,8 +102,6 @@ function M.config()
           return true
         end,
       },
-      { name = "luasnip" },
-      { name = "buffer" },
       { name = "path" },
       { name = "calc" },
       { name = "nvim_lua" },

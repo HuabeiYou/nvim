@@ -103,16 +103,6 @@ function M.config()
       map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
       -- Shift + Alt + f, same as VSCode
-      -- Ï is the key I get inside a gui
-      map("Ï", function()
-        vim.lsp.buf.format({
-          async = true,
-          filter = function(client)
-            return client.name ~= "typescript-tools"
-          end,
-        })
-      end, "Format")
-      -- Shift + Alt + f, same as VSCode
       map("<M-F>", function()
         vim.lsp.buf.format({
           async = true,

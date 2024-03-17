@@ -24,11 +24,13 @@ keymap("n", "g#", "g#zz", opts)
 keymap("n", "[d", function()
   vim.diagnostic.goto_prev()
   vim.cmd("normal! zz")
-end)
+end, opts)
 keymap("n", "]d", function()
   vim.diagnostic.goto_next()
   vim.cmd("normal! zz")
-end)
+end, opts)
+
+keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
