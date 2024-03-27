@@ -83,22 +83,22 @@ return {
 
     -- fallback to everforest
     local palette = {
-      base00 = addOneToHexColor(base16_shell("BASE16_COLOR_00_HEX") or "#1e2326"),
-      base01 = base16_shell("BASE16_COLOR_01_HEX") or "#2e383c",
-      base02 = base16_shell("BASE16_COLOR_02_HEX") or "#414b50",
-      base03 = base16_shell("BASE16_COLOR_03_HEX") or "#859289",
-      base04 = base16_shell("BASE16_COLOR_04_HEX") or "#9da9a0",
-      base05 = base16_shell("BASE16_COLOR_05_HEX") or "#d3c6aa",
-      base06 = base16_shell("BASE16_COLOR_06_HEX") or "#e4e1cd",
-      base07 = base16_shell("BASE16_COLOR_07_HEX") or "#fdf6e3",
-      base08 = base16_shell("BASE16_COLOR_08_HEX") or "#e67e80",
-      base09 = base16_shell("BASE16_COLOR_09_HEX") or "#e69875",
-      base0A = base16_shell("BASE16_COLOR_0A_HEX") or "#dbbc7f",
-      base0B = base16_shell("BASE16_COLOR_0B_HEX") or "#a7c080",
-      base0C = base16_shell("BASE16_COLOR_0C_HEX") or "#83C092",
-      base0D = base16_shell("BASE16_COLOR_0D_HEX") or "#7fbbb3",
-      base0E = base16_shell("BASE16_COLOR_0E_HEX") or "#d699b6",
-      base0F = base16_shell("BASE16_COLOR_0F_HEX") or "#d3c6aa",
+      base00 = addOneToHexColor(base16_shell("BASE16_COLOR_00_HEX") or "#1d2021"),
+      base01 = base16_shell("BASE16_COLOR_01_HEX") or "#3c3836",
+      base02 = base16_shell("BASE16_COLOR_02_HEX") or "#504945",
+      base03 = base16_shell("BASE16_COLOR_03_HEX") or "#665c54",
+      base04 = base16_shell("BASE16_COLOR_04_HEX") or "#bdae93",
+      base05 = base16_shell("BASE16_COLOR_05_HEX") or "#d5c4a1",
+      base06 = base16_shell("BASE16_COLOR_06_HEX") or "#ebdbb2",
+      base07 = base16_shell("BASE16_COLOR_07_HEX") or "#fbf1c7",
+      base08 = base16_shell("BASE16_COLOR_08_HEX") or "#fb4934",
+      base09 = base16_shell("BASE16_COLOR_09_HEX") or "#fe8019",
+      base0A = base16_shell("BASE16_COLOR_0A_HEX") or "#fabd2f",
+      base0B = base16_shell("BASE16_COLOR_0B_HEX") or "#b8bb26",
+      base0C = base16_shell("BASE16_COLOR_0C_HEX") or "#8ec07c",
+      base0D = base16_shell("BASE16_COLOR_0D_HEX") or "#83a598",
+      base0E = base16_shell("BASE16_COLOR_0E_HEX") or "#d3869b",
+      base0F = base16_shell("BASE16_COLOR_0F_HEX") or "#d65d0e",
     }
     local cterm_palette = base16.rgb_palette_to_cterm_palette(palette)
     base16.setup({
