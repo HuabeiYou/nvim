@@ -27,7 +27,7 @@ return {
     -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
     -- - sd'   - [S]urround [D]elete [']quotes
     -- - sr)'  - [S]urround [R]eplace [)] [']
-    require("mini.surround").setup()
+    -- require("mini.surround").setup()
 
     local new_section = function(name, action, section)
       return { name = name, action = action, section = section }
@@ -51,16 +51,16 @@ return {
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin
-    local statusline = require("mini.statusline")
-    statusline.setup()
+    -- local statusline = require("mini.statusline")
+    -- statusline.setup()
 
     -- You can configure sections in the statusline by overriding their
     -- default behavior. For example, here we disable the section for
     -- cursor information because line numbers are already enabled
     ---@diagnostic disable-next-line: duplicate-set-field
-    statusline.section_location = function()
-      return ""
-    end
+    -- statusline.section_location = function()
+    --   return ""
+    -- end
 
     local base16 = require("mini.base16")
 
@@ -71,9 +71,19 @@ return {
       return nil
     end
 
+    local function addOneToHexColor(hexColor)
+      -- Remove the '#' prefix and convert the hex to a numeric value
+      local numericValue = tonumber(hexColor:sub(2), 16)
+      -- Increment the numeric value
+      numericValue = numericValue + 1
+      -- Convert back to hex, ensuring the string is 6 characters long with leading zeros
+      local incrementedHex = string.format("#%06x", numericValue)
+      return incrementedHex
+    end
+
     -- fallback to everforest
     local palette = {
-      base00 = base16_shell("BASE16_COLOR_00_HEX") or "#1e2326",
+      base00 = addOneToHexColor(base16_shell("BASE16_COLOR_00_HEX") or "#1e2326"),
       base01 = base16_shell("BASE16_COLOR_01_HEX") or "#2e383c",
       base02 = base16_shell("BASE16_COLOR_02_HEX") or "#414b50",
       base03 = base16_shell("BASE16_COLOR_03_HEX") or "#859289",

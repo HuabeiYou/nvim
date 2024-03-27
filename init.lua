@@ -32,7 +32,7 @@ local plugins_enabled = {
   "colorizer",
   "eyeliner",
   "dressing",
-  -- "neogit",
+  "leap",
   "fugitive",
   "trouble",
   "sleuth",
@@ -48,6 +48,8 @@ local plugins_enabled = {
   "mini",
   "persistence",
   "neogen",
+  "markdown-preview",
+  "nvim-surround"
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
