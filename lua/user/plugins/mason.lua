@@ -10,11 +10,11 @@ function M.config()
     "lua_ls",
     "cssls",
     "html",
-    "pyright",
     "bashls",
     "jsonls",
     "yamlls",
     "marksman",
+    "pyright"
   }
 
   require("mason").setup({

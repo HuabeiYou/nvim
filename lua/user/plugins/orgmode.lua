@@ -1,13 +1,8 @@
 return {
   "nvim-orgmode/orgmode",
-  dependencies = {
-    { "nvim-treesitter/nvim-treesitter", lazy = true },
-  },
   event = "VeryLazy",
   config = function()
     local orgmode = require("orgmode")
-    orgmode.setup_ts_grammar()
-
     orgmode.setup({
       org_agenda_files = { "~/org/**/*" },
       org_default_notes_file = "~/org/refile.org",
