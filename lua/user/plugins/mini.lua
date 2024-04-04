@@ -172,7 +172,7 @@ return {
       bg = { gui = palette.base0C, cterm = cterm_palette.base0C },
       attr = "bold",
     })
-
+    highlight_both("TroublePreview", { link = "Selection" })
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,
