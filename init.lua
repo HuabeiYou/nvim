@@ -49,7 +49,7 @@ local plugins_enabled = {
   "persistence",
   "neogen",
   "markdown-preview",
-  "nvim-surround"
+  "nvim-surround",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -90,3 +90,4 @@ require("lazy").setup({
     border = "rounded",
   },
 })
+-- vim.lsp.set_log_level("debug")
