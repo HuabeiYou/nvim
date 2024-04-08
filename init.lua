@@ -90,4 +90,5 @@ require("lazy").setup({
     border = "rounded",
   },
 })
--- vim.lsp.set_log_level("debug")
+
+vim.lsp.set_log_level("WARN")

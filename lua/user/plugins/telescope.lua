@@ -129,6 +129,7 @@ function M.config()
 
       grep_string = {
         theme = "dropdown",
+        initial_mode = "normal",
       },
 
       find_files = {
