@@ -50,6 +50,7 @@ local plugins_enabled = {
   "neogen",
   "markdown-preview",
   "nvim-surround",
+  "handlebars",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

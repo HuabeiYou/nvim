@@ -40,7 +40,7 @@ return {
       header = "",
       items = {
         new_section("Find file", "Telescope find_files", "Telescope"),
-        new_section("Projects", "[[lua require('telescope').extensions.projects.projects()]]", "Telescope"),
+        new_section("Projects", "Telescope projects", "Telescope"),
         new_section("Recent files", "Telescope oldfiles", "Telescope"),
         new_section("New file", "ene | startinsert", "Built-in"),
         new_section("Quit", "qa", "Built-in"),
