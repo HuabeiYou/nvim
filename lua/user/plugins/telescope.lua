@@ -102,21 +102,21 @@ function M.config()
         "--glob=!.git/",
       },
 
-      -- mappings = {
-      --   i = {
-      --     ["<C-n>"] = actions.move_selection_next,
-      --     ["<C-p>"] = actions.move_selection_previous,
-      --
-      --     ["<C-j>"] = actions.cycle_history_next,
-      --     ["<C-k>"] = actions.cycle_history_prev,
-      --   },
-      --   n = {
-      --     ["<esc>"] = actions.close,
-      --     ["j"] = actions.move_selection_next,
-      --     ["k"] = actions.move_selection_previous,
-      --     ["q"] = actions.close,
-      --   },
-      -- },
+      mappings = {
+        i = {
+          ["<C-n>"] = actions.move_selection_next,
+          ["<C-p>"] = actions.move_selection_previous,
+
+          ["<C-j>"] = actions.cycle_history_next,
+          ["<C-k>"] = actions.cycle_history_prev,
+        },
+        n = {
+          ["<esc>"] = actions.close,
+          ["j"] = actions.move_selection_next,
+          ["k"] = actions.move_selection_previous,
+          ["q"] = actions.close,
+        },
+      },
     },
     pickers = {
       help_tags = {
