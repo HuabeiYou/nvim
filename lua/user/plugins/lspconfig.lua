@@ -193,7 +193,7 @@ function M.config()
     "marksman",
     "gopls",
     "pyright",
-    "tailwindcss",
+    -- "tailwindcss",
     -- "eslint",
     -- "tsserver",
     -- "rust_analyzer",

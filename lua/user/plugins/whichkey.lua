@@ -7,6 +7,10 @@ function M.config()
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
     [";"] = { "<cmd>ToggleTerm direction=float<CR>", "FloatTerm" },
     v = { "<cmd>vsplit<CR>", "Split" },
+    a = {
+      name = "AI",
+      a = { "<cmd>NeoAI<CR>", "Toggle Chat Window" },
+    },
     b = {
       name = "Buffers",
       c = { "<cmd>bdelete<cr>", "Close Buffer" },

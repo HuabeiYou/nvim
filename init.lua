@@ -51,6 +51,7 @@ local plugins_enabled = {
   "markdown-preview",
   "nvim-surround",
   "neoscroll",
+  "neoai",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
