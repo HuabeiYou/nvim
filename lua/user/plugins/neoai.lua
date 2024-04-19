@@ -29,7 +29,7 @@ function M.config()
     ui = {
       output_popup_text = "LLM",
       input_popup_text = "Prompt",
-      width = 30, -- As percentage eg. 30%
+      width = 40, -- As percentage eg. 30%
       output_popup_height = 80, -- As percentage eg. 80%
       submit = "<Enter>", -- Key binding to submit the prompt
     },
