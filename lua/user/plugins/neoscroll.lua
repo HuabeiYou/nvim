@@ -3,14 +3,6 @@ local M = {
 }
 
 function M.config()
-  vim.cmd([[
-  nnoremap <C-j> <C-D>
-  vnoremap <C-j> <C-D>
-
-  nnoremap <C-k> <C-U>
-  vnoremap <C-k> <C-U>
-]])
-
   require("neoscroll").setup({
     -- All these keys will be mapped to their corresponding default scrolling animation
     mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
