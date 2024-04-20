@@ -2,6 +2,8 @@ local M = {
   "stevearc/oil.nvim",
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  commit = "8bb35eb81a48f14c4a1ef480c2bbb87ceb7cd8bb",
+  pin = true
 }
 
 function M.config()
