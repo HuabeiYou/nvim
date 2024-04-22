@@ -118,8 +118,16 @@ function M.config()
 
       -- Shift + Alt + f, same as VSCode
       map("n", "<M-F>", function()
-        vim.lsp.buf.format({
-          async = true,
+        -- vim.lsp.buf.format({
+        --   async = false,
+        --   filter = function(client)
+        --     return client.name ~= "typescript-tools"
+        --   end,
+        -- })
+        require("conform").format({
+          async = false, -- If the buffer is modified before the formatter completes, the formatting will be discarded.
+          timeout_ms = 1000,
+          lsp_fallback = true,
           filter = function(client)
             return client.name ~= "typescript-tools"
           end,

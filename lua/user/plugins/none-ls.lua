@@ -17,7 +17,9 @@ function M.config()
       formatting.stylua,
       formatting.prettier,
       formatting.black,
-      formatting.shfmt,
+      formatting.shfmt.with({
+        extra_filetypes = { "zsh" },
+      }),
       -- formatting.prettier.with {
       --   extra_filetypes = { "toml" },
       --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },

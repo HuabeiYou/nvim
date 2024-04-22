@@ -8,7 +8,8 @@ local plugins_enabled = {
   "mason",
   "lspconfig",
   "cmp",
-  "none-ls",
+  -- "none-ls",
+  "conform",
   "telescope",
   "whichkey",
   "autopairs",
@@ -50,7 +51,6 @@ local plugins_enabled = {
   "neogen",
   "markdown-preview",
   "nvim-surround",
-  "neoscroll",
   "neoai",
 }
 
