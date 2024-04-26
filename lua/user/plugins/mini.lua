@@ -48,19 +48,16 @@ return {
       },
     })
 
-    -- Simple and easy statusline.
-    --  You could remove this setup call if you don't like it,
-    --  and try some other statusline plugin
-    -- local statusline = require("mini.statusline")
-    -- statusline.setup()
+    local statusline = require("mini.statusline")
+    statusline.setup()
 
     -- You can configure sections in the statusline by overriding their
     -- default behavior. For example, here we disable the section for
     -- cursor information because line numbers are already enabled
     ---@diagnostic disable-next-line: duplicate-set-field
-    -- statusline.section_location = function()
-    --   return ""
-    -- end
+    statusline.section_location = function()
+      return ""
+    end
 
     local base16 = require("mini.base16")
 
@@ -140,7 +137,7 @@ return {
     highlight_both("Operator", { link = "Keyword" })
     highlight_both("Identifier", { fg = { gui = palette.base0A, cterm = cterm_palette.base0A } })
     highlight_both("Delimiter", { fg = { gui = palette.base04, cterm = cterm_palette.base04 } })
-    highlight_both("@lsp.type.parameter", { link = "Identifier" })
+    highlight_both("@lsp.type.parameter", { link = "@lsp.type.variable" })
     highlight_both("Tag", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
     highlight_both(
       "TreesitterContextLineNumberBottom",
@@ -173,7 +170,5 @@ return {
       attr = "bold",
     })
     highlight_both("TroublePreview", { link = "Selection" })
-    -- ... and there is more!
-    --  Check out: https://github.com/echasnovski/mini.nvim
   end,
 }

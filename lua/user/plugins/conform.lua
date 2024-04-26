@@ -16,7 +16,7 @@ function M.config()
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
       javascriptreact = { "prettier" },
-      handlebar = { "prettier" },
+      handlebars = { "prettier" },
     },
   })
 end
