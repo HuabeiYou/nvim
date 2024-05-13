@@ -51,9 +51,9 @@ return {
     local statusline = require("mini.statusline")
     statusline.setup()
 
-    -- You can configure sections in the statusline by overriding their
-    -- default behavior. For example, here we disable the section for
-    -- cursor information because line numbers are already enabled
+    -- -- You can configure sections in the statusline by overriding their
+    -- -- default behavior. For example, here we disable the section for
+    -- -- cursor information because line numbers are already enabled
     ---@diagnostic disable-next-line: duplicate-set-field
     statusline.section_location = function()
       return ""
@@ -135,7 +135,8 @@ return {
 
     highlight_both("Command", { fg = { gui = palette.base03, cterm = cterm_palette.base03 } })
     highlight_both("Operator", { link = "Keyword" })
-    highlight_both("Identifier", { fg = { gui = palette.base0A, cterm = cterm_palette.base0A } })
+    highlight_both("Identifier", { link = "Normal" })
+    -- highlight_both("Identifier", { fg = { gui = palette.base0A, cterm = cterm_palette.base0A } })
     highlight_both("Delimiter", { fg = { gui = palette.base04, cterm = cterm_palette.base04 } })
     highlight_both("@lsp.type.parameter", { link = "@lsp.type.variable" })
     highlight_both("Tag", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
@@ -144,7 +145,7 @@ return {
       { fg = { gui = palette.base03, cterm = cterm_palette.base03 }, attr = "underline" }
     )
     highlight_both("LineNrAbove", { fg = { gui = palette.base02, cterm = cterm_palette.base02 } })
-    highlight_both("CursorLine", { bg = { gui = palette.base01, cterm = cterm_palette.base01 } })
+    -- highlight_both("CursorLine", { bg = { gui = palette.base02, cterm = cterm_palette.base02 } })
     highlight_both("CursorLineNr", { fg = { gui = palette.base06, cterm = cterm_palette.base06 } })
     highlight_both("CursorLineSign", {})
     highlight_both("LineNrBelow", { fg = { gui = palette.base02, cterm = cterm_palette.base02 } })

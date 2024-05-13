@@ -84,7 +84,7 @@ function M.config()
       }),
     },
     sources = {
-      { name = "luasnip" },
+      { name = "buffer" },
       {
         name = "nvim_lsp",
         entry_filter = function(entry, ctx)
@@ -101,7 +101,7 @@ function M.config()
           return true
         end,
       },
-      { name = "buffer" },
+      { name = "luasnip" },
       { name = "path" },
       { name = "calc" },
       { name = "nvim_lua" },
