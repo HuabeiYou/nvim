@@ -52,6 +52,7 @@ local plugins_enabled = {
   "markdown-preview",
   "nvim-surround",
   "neoai",
+  "dadbod",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

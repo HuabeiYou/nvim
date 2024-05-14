@@ -106,7 +106,63 @@ function M.config()
       { name = "calc" },
       { name = "nvim_lua" },
       { name = "treesitter" },
-      { name = "orgmode" },
+    },
+    filetype = {
+      sql = {
+        sources = {
+          { name = "vim-dadbod-completion" },
+          { name = "buffer" },
+          {
+            name = "nvim_lsp",
+            entry_filter = function(entry, ctx)
+              if ctx.prev_context.filetype == "markdown" then
+                return true
+              end
+
+              local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+
+              if kind == "Text" then
+                return false
+              end
+
+              return true
+            end,
+          },
+          { name = "luasnip" },
+        },
+      },
+      org = {
+        sources = {
+          { name = "buffer" },
+          { name = "orgmode" },
+          { name = "path" },
+          { name = "calc" },
+        },
+      },
+      markdown = {
+        sources = {
+          { name = "buffer" },
+          { name = "orgmode" },
+          {
+            name = "nvim_lsp",
+            entry_filter = function(entry, ctx)
+              if ctx.prev_context.filetype == "markdown" then
+                return true
+              end
+
+              local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+
+              if kind == "Text" then
+                return false
+              end
+
+              return true
+            end,
+          },
+          { name = "path" },
+          { name = "calc" },
+        },
+      },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
