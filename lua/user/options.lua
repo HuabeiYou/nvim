@@ -2,7 +2,8 @@ vim.opt.backup = false -- creates a backup file
 vim.opt.background = "dark"
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
-vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
+vim.opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
+vim.opt.shortmess:append("c")
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
@@ -28,8 +29,8 @@ vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2 -- insert 2 spaces for a tab
 vim.opt.cursorline = true -- highlight the current line
 vim.opt.number = true -- set numbered lines
-vim.opt.laststatus = 3 -- global status bar
--- vim.opt.laststatus = 0 -- disable status bar
+-- vim.opt.laststatus = 3 -- global status bar
+vim.opt.laststatus = 0 -- disable status bar
 vim.opt.showcmd = false
 vim.opt.ruler = false
 vim.opt.relativenumber = true -- set relative numbered lines
@@ -47,10 +48,9 @@ vim.opt.fillchars:append({
   stl = " ",
 })
 
-vim.opt.shortmess:append("c")
-
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
+vim.cmd("set nofoldenable")
 
 if vim.g.neovide then
   vim.g.neovide_theme = "auto"

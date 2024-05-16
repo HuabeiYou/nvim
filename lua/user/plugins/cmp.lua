@@ -40,13 +40,19 @@ function M.config()
       end,
     },
     mapping = cmp.mapping.preset.insert({
-      ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i", "c" }),
-      ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i", "c" }),
+      ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+      ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       -- ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
       -- Accept ([y]es) the completion.
       --  This will auto-import if your LSP supports it.
       --  This will expand snippets if the LSP sent a snippet.
-      ["<C-y>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
+      ["<C-y>"] = cmp.mapping(
+        cmp.mapping.confirm({
+          behavior = cmp.SelectBehavior.Insert,
+          select = true,
+        }),
+        { "i", "c" }
+      ),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-k>"] = cmp.mapping(function()
         if not cmp.visible_docs() then
@@ -61,12 +67,12 @@ function M.config()
       -- <C-l> will move you to the right of each of the expansion locations.
       -- <C-h> is similar, except moving you backwards.
       ["<C-l>"] = cmp.mapping(function()
-        if luasnip.expand_or_locally_jumpable() then
+        if luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         end
       end, { "i", "s" }),
       ["<C-h>"] = cmp.mapping(function()
-        if luasnip.locally_jumpable(-1) then
+        if luasnip.jumpable(-1) then
           luasnip.jump(-1)
         end
       end, { "i", "s" }),
@@ -88,10 +94,6 @@ function M.config()
       {
         name = "nvim_lsp",
         entry_filter = function(entry, ctx)
-          if ctx.prev_context.filetype == "markdown" then
-            return true
-          end
-
           local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
 
           if kind == "Text" then
@@ -106,63 +108,6 @@ function M.config()
       { name = "calc" },
       { name = "nvim_lua" },
       { name = "treesitter" },
-    },
-    filetype = {
-      sql = {
-        sources = {
-          { name = "vim-dadbod-completion" },
-          { name = "buffer" },
-          {
-            name = "nvim_lsp",
-            entry_filter = function(entry, ctx)
-              if ctx.prev_context.filetype == "markdown" then
-                return true
-              end
-
-              local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-
-              if kind == "Text" then
-                return false
-              end
-
-              return true
-            end,
-          },
-          { name = "luasnip" },
-        },
-      },
-      org = {
-        sources = {
-          { name = "buffer" },
-          { name = "orgmode" },
-          { name = "path" },
-          { name = "calc" },
-        },
-      },
-      markdown = {
-        sources = {
-          { name = "buffer" },
-          { name = "orgmode" },
-          {
-            name = "nvim_lsp",
-            entry_filter = function(entry, ctx)
-              if ctx.prev_context.filetype == "markdown" then
-                return true
-              end
-
-              local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-
-              if kind == "Text" then
-                return false
-              end
-
-              return true
-            end,
-          },
-          { name = "path" },
-          { name = "calc" },
-        },
-      },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
@@ -189,6 +134,39 @@ function M.config()
       documentation = {
         border = "rounded",
       },
+    },
+  })
+  cmp.setup.filetype({
+    "sql",
+    "mysql",
+  }, {
+    sources = {
+      { name = "vim-dadbod-completion" },
+      { name = "buffer" },
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+    },
+  })
+  cmp.setup.filetype({
+    "org",
+  }, {
+    sources = {
+      { name = "buffer" },
+      { name = "orgmode" },
+      { name = "path" },
+      { name = "calc" },
+    },
+  })
+
+  cmp.setup.filetype({
+    "markdown",
+  }, {
+    sources = {
+      { name = "buffer" },
+      { name = "orgmode" },
+      { name = "nvim_lsp" },
+      { name = "path" },
+      { name = "calc" },
     },
   })
 end
