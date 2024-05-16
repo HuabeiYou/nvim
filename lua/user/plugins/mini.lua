@@ -22,17 +22,10 @@ return {
     --  - ci'  - [C]hange [I]nside [']quote
     require("mini.ai").setup({ n_lines = 500 })
 
-    -- Add/delete/replace surroundings (brackets, quotes, etc.)
-    --
-    -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-    -- - sd'   - [S]urround [D]elete [']quotes
-    -- - sr)'  - [S]urround [R]eplace [)] [']
-    -- require("mini.surround").setup()
-
+    -- Start up screen
     local new_section = function(name, action, section)
       return { name = name, action = action, section = section }
     end
-
     local starter = require("mini.starter")
     starter.setup({
       evaluate_single = true,
@@ -56,14 +49,12 @@ return {
     -- end
 
     local base16 = require("mini.base16")
-
     local base16_shell = function(env_name)
       if os.getenv(env_name) ~= nil then
         return "#" .. os.getenv(env_name)
       end
       return nil
     end
-
     local function addOneToHexColor(hexColor)
       -- Remove the '#' prefix and convert the hex to a numeric value
       local numericValue = tonumber(hexColor:sub(2), 16)
@@ -73,8 +64,6 @@ return {
       local incrementedHex = string.format("#%06x", numericValue)
       return incrementedHex
     end
-
-    -- fallback to everforest
     local palette = {
       base00 = addOneToHexColor(base16_shell("BASE16_COLOR_00_HEX") or "#1d2021"),
       base01 = base16_shell("BASE16_COLOR_01_HEX") or "#3c3836",
@@ -129,20 +118,17 @@ return {
       vim.cmd(command)
     end
 
-    highlight_both("Command", { fg = { gui = palette.base03, cterm = cterm_palette.base03 } })
+    highlight_both("Comment", { fg = { gui = palette.base03, cterm = cterm_palette.base03 }, attr = "italic" })
     highlight_both("Operator", { link = "Keyword" })
-    highlight_both("Identifier", { link = "Normal" })
-    -- highlight_both("Identifier", { fg = { gui = palette.base0A, cterm = cterm_palette.base0A } })
+    highlight_both("Identifier", { link = "@variable" })
     highlight_both("Delimiter", { fg = { gui = palette.base04, cterm = cterm_palette.base04 } })
-    highlight_both("@lsp.type.parameter", { link = "@lsp.type.variable" })
     highlight_both("Tag", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
     highlight_both(
       "TreesitterContextLineNumberBottom",
       { fg = { gui = palette.base03, cterm = cterm_palette.base03 }, attr = "underline" }
     )
     highlight_both("LineNrAbove", { fg = { gui = palette.base02, cterm = cterm_palette.base02 } })
-    -- highlight_both("CursorLine", { bg = { gui = palette.base02, cterm = cterm_palette.base02 } })
-    highlight_both("CursorLineNr", { fg = { gui = palette.base06, cterm = cterm_palette.base06 } })
+    highlight_both("CursorLineNr", { fg = { gui = palette.base0A, cterm = cterm_palette.base0A } })
     highlight_both("CursorLineSign", {})
     highlight_both("LineNrBelow", { fg = { gui = palette.base02, cterm = cterm_palette.base02 } })
     highlight_both("SignColumn", { fg = { gui = palette.base06, cterm = cterm_palette.base06 } })

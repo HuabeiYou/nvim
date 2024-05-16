@@ -3,12 +3,11 @@ require("user.keymaps")
 require("user.autocmds")
 
 local plugins_enabled = {
-  -- "colorscheme",
+  -- "colorbuddy",
   "treesitter",
   "mason",
   "lspconfig",
   "cmp",
-  -- "none-ls",
   "conform",
   "telescope",
   "whichkey",

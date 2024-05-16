@@ -34,12 +34,7 @@ function M.config()
   require("luasnip.loaders.from_vscode").lazy_load()
 
   cmp.setup({
-    snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body) -- For `luasnip` users.
-      end,
-    },
-    mapping = cmp.mapping.preset.insert({
+    mapping = {
       ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       -- ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
@@ -76,7 +71,7 @@ function M.config()
           luasnip.jump(-1)
         end
       end, { "i", "s" }),
-    }),
+    },
     formatting = {
       expandable_indicator = true,
       -- fields = { "abbr", "kind", "menu" },
@@ -90,24 +85,17 @@ function M.config()
       }),
     },
     sources = {
+      -- { name = "luasnip" },
+      { name = "nvim_lsp" },
       { name = "buffer" },
-      {
-        name = "nvim_lsp",
-        entry_filter = function(entry, ctx)
-          local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-
-          if kind == "Text" then
-            return false
-          end
-
-          return true
-        end,
-      },
-      { name = "luasnip" },
       { name = "path" },
       { name = "calc" },
       { name = "nvim_lua" },
-      { name = "treesitter" },
+    },
+    snippet = {
+      expand = function(args)
+        require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+      end,
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
