@@ -52,6 +52,7 @@ local plugins_enabled = {
   "nvim-surround",
   "neoai",
   "dadbod",
+  "tmux"
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -94,3 +95,6 @@ require("lazy").setup({
 })
 
 vim.lsp.set_log_level("WARN")
+
+-- silent the deprecation warning
+vim.deprecate = function() end
