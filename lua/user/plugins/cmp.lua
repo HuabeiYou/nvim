@@ -5,17 +5,12 @@ local M = {
   dependencies = {
     {
       "L3MON4D3/LuaSnip",
-      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-      -- install jsregexp (optional!).
+      version = "v2.*",
       build = "make install_jsregexp",
       dependencies = {
         "rafamadriz/friendly-snippets",
         "molleweide/LuaSnip-snippets.nvim",
       },
-      config = function()
-        local ls = require("luasnip")
-        ls.filetype_extend("javascript", { "jsdoc" })
-      end,
     },
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lsp",
@@ -31,8 +26,8 @@ local M = {
 function M.config()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
+  luasnip.filetype_extend("javascript", { "jsdoc" })
   require("luasnip.loaders.from_vscode").lazy_load()
-
   cmp.setup({
     mapping = {
       ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -72,26 +67,25 @@ function M.config()
         end
       end, { "i", "s" }),
     },
-    formatting = {
-      expandable_indicator = true,
-      -- fields = { "abbr", "kind", "menu" },
-      format = require("lspkind").cmp_format({
-        mode = "symbol_text",
-        maxwidth = 60, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-        -- can also be a function to dynamically calculate max width such as
-        -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
-        ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-        show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-      }),
-    },
-    sources = {
-      -- { name = "luasnip" },
+    -- formatting = {
+    --   expandable_indicator = true,
+    --   -- fields = { "abbr", "kind", "menu" },
+    --   format = require("lspkind").cmp_format({
+    --     mode = "symbol_text",
+    --     maxwidth = 60, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+    --     -- can also be a function to dynamically calculate max width such as
+    --     -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+    --     ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+    --     show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+    --   }),
+    -- },
+    sources = cmp.config.sources({
       { name = "nvim_lsp" },
+      { name = "luasnip" },
       { name = "buffer" },
       { name = "path" },
       { name = "calc" },
-      { name = "nvim_lua" },
-    },
+    }),
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
@@ -128,35 +122,36 @@ function M.config()
     "sql",
     "mysql",
   }, {
-    sources = {
+    sources = cmp.config.sources({
       { name = "vim-dadbod-completion" },
+    }, {
       { name = "buffer" },
+    }, {
       { name = "nvim_lsp" },
       { name = "luasnip" },
-    },
+    }),
   })
-  cmp.setup.filetype({
-    "org",
-  }, {
-    sources = {
-      { name = "buffer" },
-      { name = "orgmode" },
-      { name = "path" },
-      { name = "calc" },
-    },
-  })
-
-  cmp.setup.filetype({
-    "markdown",
-  }, {
-    sources = {
-      { name = "buffer" },
-      { name = "orgmode" },
-      { name = "nvim_lsp" },
-      { name = "path" },
-      { name = "calc" },
-    },
-  })
+  -- cmp.setup.filetype({
+  --   "org",
+  -- }, {
+  --   sources = {
+  --     { name = "buffer" },
+  --     { name = "orgmode" },
+  --     { name = "path" },
+  --     { name = "calc" },
+  --   },
+  -- })
+  -- cmp.setup.filetype({
+  --   "markdown",
+  -- }, {
+  --   sources = {
+  --     { name = "buffer" },
+  --     { name = "orgmode" },
+  --     { name = "nvim_lsp" },
+  --     { name = "path" },
+  --     { name = "calc" },
+  --   },
+  -- })
 end
 
 return M

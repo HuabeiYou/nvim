@@ -200,9 +200,9 @@ function M.config()
     "marksman",
     "gopls",
     "pyright",
+    "tsserver",
     -- "tailwindcss",
     -- "eslint",
-    -- "tsserver",
     -- "rust_analyzer",
   }
 

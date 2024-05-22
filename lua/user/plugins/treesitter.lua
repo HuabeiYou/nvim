@@ -26,11 +26,6 @@ local M = {
         },
         auto_install = true,
         modules = {},
-        indent = {
-          enable = true,
-          disable = { "yaml" },
-        },
-        autopairs = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {

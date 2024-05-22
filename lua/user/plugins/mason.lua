@@ -26,7 +26,7 @@ function M.config()
   require("mason-lspconfig").setup({
     ensure_installed = servers,
     automatic_installation = {
-      exclude = { "rust_analyzer", "tsserver" },
+      exclude = { "rust_analyzer" },
     },
   })
 

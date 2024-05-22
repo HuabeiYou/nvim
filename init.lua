@@ -3,7 +3,7 @@ require("user.keymaps")
 require("user.autocmds")
 
 local plugins_enabled = {
-  -- "colorbuddy",
+  "colorscheme",
   "treesitter",
   "mason",
   "lspconfig",
@@ -16,8 +16,6 @@ local plugins_enabled = {
   "harpoon",
   "dial",
   "telescope-extra",
-  "typescript-tools",
-  "tsc",
   "rustaceanvim",
   "devicons",
   "oil",
@@ -52,7 +50,7 @@ local plugins_enabled = {
   "nvim-surround",
   "neoai",
   "dadbod",
-  "tmux"
+  "tmux",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
