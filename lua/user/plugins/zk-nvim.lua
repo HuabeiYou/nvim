@@ -2,7 +2,7 @@ return {
   "zk-org/zk-nvim",
   event = "VeryLazy",
   config = function()
-    local lspconfig = require("user.plugins.lspconfig")
+    local lspconfig = require("user.plugins.lsp")
     require("zk").setup({
       -- can be "telescope", "fzf" or "select" (`vim.ui.select`)
       -- it's recommended to use "telescope" or "fzf"

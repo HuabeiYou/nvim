@@ -5,7 +5,7 @@ local M = {
 }
 
 function M.config()
-  local lspconfig = require "user.plugins.lspconfig"
+  local lspconfig = require "user.plugins.lsp"
   vim.g.rustaceanvim = {
     tools = {},
     server = {
