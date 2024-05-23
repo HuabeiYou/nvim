@@ -5,7 +5,7 @@ local M = {
 function M.config()
   local mappings = {
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    [";"] = { "<cmd>ToggleTerm direction=float<CR>", "FloatTerm" },
+    [";"] = { "<cmd>ToggleTerm direction=horizontal<CR>", "Terminal" },
     v = { "<cmd>vsplit<CR>", "Split" },
     a = {
       name = "AI",
