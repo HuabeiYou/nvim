@@ -38,7 +38,8 @@ local M = {
         },
         color_overrides = {
           mocha = {
-            base = "#1e1e28",
+            base = "#161616",
+            mantle = "#212121",
           },
         },
         custom_highlights = {
