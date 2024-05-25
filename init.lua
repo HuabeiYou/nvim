@@ -3,7 +3,7 @@ require("user.keymaps")
 require("user.autocmds")
 
 local plugins_enabled = {
-  "colorscheme",
+  -- "colorscheme",
   "treesitter",
   "lsp",
   "cmp",
@@ -22,7 +22,7 @@ local plugins_enabled = {
   "tabby",
   "bqf",
   "matchup",
-  "indentline",
+  "indent-blankline",
   "comment",
   "todo-comments",
   "colorizer",

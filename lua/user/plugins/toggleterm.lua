@@ -7,7 +7,7 @@ function M.config()
   require("toggleterm").setup({
     size = function(term)
       if term.direction == "horizontal" then
-        return 20
+        return 30
       elseif term.direction == "vertical" then
         return vim.o.columns * 0.4
       end
@@ -26,11 +26,6 @@ function M.config()
     float_opts = {
       border = "single",
       winblend = 0,
-    },
-    highlights = {
-      FloatBorder = {
-        guifg = "#89b4fa",
-      },
     },
     winbar = {
       enabled = true,
