@@ -68,7 +68,7 @@ return {
       base00 = addOneToHexColor(base16_shell("BASE16_COLOR_00_HEX") or "#1d2021"),
       base01 = base16_shell("BASE16_COLOR_01_HEX") or "#3c3836",
       base02 = base16_shell("BASE16_COLOR_02_HEX") or "#504945",
-      base03 = base16_shell("BASE16_COLOR_03_HEX") or "#928374",
+      base03 = base16_shell("BASE16_COLOR_03_HEX") or "#665c54",
       base04 = base16_shell("BASE16_COLOR_04_HEX") or "#a89984",
       base05 = base16_shell("BASE16_COLOR_05_HEX") or "#d5c4a1",
       base06 = base16_shell("BASE16_COLOR_06_HEX") or "#ebdbb2",
