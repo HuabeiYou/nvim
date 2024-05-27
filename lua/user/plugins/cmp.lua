@@ -81,6 +81,11 @@ function M.config()
         end
       end, { "i", "s" }),
     },
+    window = {
+      completion = {
+        winblend = 0,
+      },
+    },
   })
 
   cmp.setup.filetype({

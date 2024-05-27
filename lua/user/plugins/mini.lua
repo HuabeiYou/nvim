@@ -121,6 +121,7 @@ return {
     highlight_both("Comment", { fg = { gui = palette.base03, cterm = cterm_palette.base03 }, attr = "italic" })
     highlight_both("Operator", { link = "Boolean" })
     highlight_both("Identifier", { link = "@variable" })
+    highlight_both("@variable.parameter", { link = "Type" })
     highlight_both("Delimiter", { fg = { gui = palette.base04, cterm = cterm_palette.base04 } })
     highlight_both("Tag", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
     highlight_both(
