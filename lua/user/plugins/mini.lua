@@ -122,6 +122,7 @@ return {
     highlight_both("Operator", { link = "Boolean" })
     highlight_both("Identifier", { link = "@variable" })
     highlight_both("@variable.parameter", { link = "Type" })
+    highlight_both("Function", { fg = { gui = palette.base0D, cterm = cterm_palette.base0D }, attr = "bold" })
     highlight_both("Delimiter", { fg = { gui = palette.base04, cterm = cterm_palette.base04 } })
     highlight_both("Tag", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
     highlight_both(
