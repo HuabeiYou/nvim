@@ -13,8 +13,8 @@ function M.config()
     },
     b = {
       name = "Buffers",
+      b = { "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", "List Buffers" },
       d = { "<cmd>bdelete<cr>", "Delete Buffer" },
-      l = { "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", "List Buffer" },
       n = { "<cmd>bnext<cr>", "Next Buffer" },
       p = { "<cmd>bprevious<cr>", "Previous Buffer" },
     },
@@ -66,7 +66,7 @@ function M.config()
       },
     },
     window = {
-      border = "rounded",
+      border = nil,
       position = "bottom",
       padding = { 2, 2, 2, 2 },
     },

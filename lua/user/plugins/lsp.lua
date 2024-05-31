@@ -199,7 +199,7 @@ function M.config()
       focusable = true,
       style = "minimal",
       source = "if_many",
-      border = "rounded",
+      border = nil,
       header = "",
       prefix = "",
     },
@@ -208,9 +208,9 @@ function M.config()
   for _, sign in ipairs(diagnostic_sign_values) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-  require("lspconfig.ui.windows").default_options.border = "rounded"
+  -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+  -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+  -- require("lspconfig.ui.windows").default_options.border = "rounded"
 end
 
 return M
