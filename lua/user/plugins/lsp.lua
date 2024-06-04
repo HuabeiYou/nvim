@@ -6,7 +6,11 @@ local M = {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     "folke/neodev.nvim",
     "b0o/schemastore.nvim",
-    { "j-hui/fidget.nvim", opts = {} },
+    { "j-hui/fidget.nvim", opts = {
+      progress = {
+        suppress_on_insert = false,
+      },
+    } },
     {
       "stevearc/conform.nvim",
       config = function()
@@ -77,16 +81,21 @@ function M.config()
       end,
     },
   })
-  vim.keymap.set("n", "gl", vim.diagnostic.open_float)
+  vim.keymap.set("n", "gl", vim.diagnostic.open_float, {
+    desc = "Show diagnostic in float window",
+  })
   vim.keymap.set("n", "[d", function()
     vim.diagnostic.goto_prev()
     vim.cmd("normal! zz")
-  end)
+  end, {
+    desc = "Go to previous diagnostic",
+  })
   vim.keymap.set("n", "]d", function()
     vim.diagnostic.goto_next()
     vim.cmd("normal! zz")
-  end)
-  vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+  end, {
+    desc = "Go to next diagnostic",
+  })
 
   -- Use LspAttach autocommand to only map the following keys
   -- after the language server attaches to the current buffer
@@ -120,7 +129,7 @@ function M.config()
       -- Jump to the type of the word under your cursor.
       --  Useful when you're not sure what type a variable is and you want to see
       --  the definition of its *type*, not where it was *defined*.
-      map("n", "<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+      -- map("n", "<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 
       -- Fuzzy find all the symbols in your current document.
       --  Symbols are things like variables, functions, types, etc.

@@ -1,5 +1,47 @@
 local M = {
   "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 500
+  end,
+  opts = {
+    plugins = {
+      marks = true,
+      registers = true,
+      spelling = {
+        enabled = true,
+        suggestions = 20,
+      },
+      presets = {
+        operators = false,
+        motions = false,
+        text_objects = false,
+        windows = false,
+        nav = false,
+        z = false,
+        g = false,
+      },
+    },
+    -- motions = {
+    --   count = true,
+    -- },
+    window = {
+      border = "shadow", -- none, single, double, shadow
+      position = "bottom", -- bottom, top
+      margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+      padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
+      winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+      zindex = 1000, -- positive value to position WhichKey above other floating windows.
+    },
+    ignore_missing = false,
+    show_help = false,
+    show_keys = false,
+    disable = {
+      buftypes = {},
+      filetypes = { "TelescopePrompt" },
+    },
+  },
 }
 
 function M.config()
@@ -43,42 +85,11 @@ function M.config()
       s = { "<cmd>lua require('neotest').run.stop()<cr>", "Test Stop" },
       a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach Test" },
     },
+    x = { name = "Trouble" },
     Z = { name = "ZK" },
   }
 
   local which_key = require("which-key")
-  which_key.setup({
-    plugins = {
-      marks = true,
-      registers = true,
-      spelling = {
-        enabled = true,
-        suggestions = 20,
-      },
-      presets = {
-        operators = false,
-        motions = false,
-        text_objects = false,
-        windows = false,
-        nav = false,
-        z = false,
-        g = false,
-      },
-    },
-    window = {
-      border = nil,
-      position = "bottom",
-      padding = { 2, 2, 2, 2 },
-    },
-    ignore_missing = true,
-    show_help = false,
-    show_keys = false,
-    disable = {
-      buftypes = {},
-      filetypes = { "TelescopePrompt" },
-    },
-  })
-
   local opts = {
     mode = "n", -- NORMAL mode
     prefix = "<leader>",

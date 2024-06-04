@@ -81,6 +81,10 @@ function M.config()
   local icons = require("user.icons")
   local actions = require("telescope.actions")
 
+  local open_with_trouble = require("trouble.sources.telescope").open
+  -- Use this to add more results without clearing the trouble list
+  local add_to_trouble = require("trouble.sources.telescope").add
+
   require("telescope").setup({
     defaults = {
       prompt_prefix = icons.ui.Telescope .. " ",
@@ -106,15 +110,18 @@ function M.config()
         i = {
           ["<C-n>"] = actions.move_selection_next,
           ["<C-p>"] = actions.move_selection_previous,
-
           ["<C-j>"] = actions.cycle_history_next,
           ["<C-k>"] = actions.cycle_history_prev,
+          ["<C-t>"] = open_with_trouble,
+          ["<C-T>"] = add_to_trouble,
         },
         n = {
           ["<esc>"] = actions.close,
           ["j"] = actions.move_selection_next,
           ["k"] = actions.move_selection_previous,
           ["q"] = actions.close,
+          ["<C-t>"] = open_with_trouble,
+          ["<C-T>"] = add_to_trouble,
         },
       },
     },
