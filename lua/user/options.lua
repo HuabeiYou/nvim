@@ -6,7 +6,7 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
 vim.opt.shortmess:append("c")
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
-vim.opt.formatoptions:remove "o" -- Don't have `o` add a comment
+vim.opt.formatoptions:remove("o") -- Don't have `o` add a comment
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true -- ignore case in search patterns
 vim.opt.inccommand = "split" --shows the effects of |:substitute|, |:smagic|, |:snomagic| and user commands with the |:command-preview| flag as you type.
@@ -40,7 +40,7 @@ vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would sh
 vim.opt.wrap = false -- display lines as one long line
 vim.opt.scrolloff = 0
 vim.opt.sidescrolloff = 8
-vim.opt.guifont = "CaskaydiaCove Nerd Font Mono:h16" -- the font used in graphical neovim applications
+vim.opt.guifont = "CaskaydiaCove Nerd Font Mono:h14" -- the font used in graphical neovim applications
 vim.opt.title = false
 -- colorcolumn = "80",
 -- colorcolumn = "120",

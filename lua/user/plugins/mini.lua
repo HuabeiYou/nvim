@@ -15,7 +15,6 @@ return {
   },
   config = function()
     -- Better Around/Inside textobjects
-    --
     -- Examples:
     --  - va)  - [V]isually select [A]round [)]paren
     --  - yinq - [Y]ank [I]nside [N]ext [']quote
@@ -40,13 +39,6 @@ return {
         new_section("Session restore", [[lua require("persistence").load()]], "Session"),
       },
     })
-
-    -- local statusline = require("mini.statusline")
-    -- statusline.setup()
-    -- ---@diagnostic disable-next-line: duplicate-set-field
-    -- statusline.section_location = function()
-    --   return ""
-    -- end
 
     local base16 = require("mini.base16")
     local base16_shell = function(env_name)
@@ -124,7 +116,6 @@ return {
     highlight_both("@variable.parameter", { link = "Type" })
     highlight_both("Function", { fg = { gui = palette.base0D, cterm = cterm_palette.base0D }, attr = "bold" })
     highlight_both("Delimiter", { fg = { gui = palette.base04, cterm = cterm_palette.base04 } })
-    -- highlight_both("Tag", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
     highlight_both(
       "TreesitterContextLineNumberBottom",
       { fg = { gui = palette.base03, cterm = cterm_palette.base03 }, attr = "underline" }
@@ -144,16 +135,5 @@ return {
     highlight_both("DiagnosticFloatingInfo", { fg = { gui = palette.base0C, cterm = cterm_palette.base0C } })
     highlight_both("DiagnosticFloatingHint", { fg = { gui = palette.base0D, cterm = cterm_palette.base0D } })
     highlight_both("TelescopeBorder", { fg = { gui = palette.base05, cterm = cterm_palette.base05 } })
-    -- highlight_both("MiniStatuslineModeNormal", {
-    --   fg = { gui = palette.base00, cterm = cterm_palette.base00 },
-    --   bg = { gui = palette.base04, cterm = cterm_palette.base04 },
-    --   attr = "bold",
-    -- })
-    -- highlight_both("MiniStatuslineModeOther", {
-    --   fg = { gui = palette.base00, cterm = cterm_palette.base00 },
-    --   bg = { gui = palette.base0C, cterm = cterm_palette.base0C },
-    --   attr = "bold",
-    -- })
-    -- highlight_both("TroublePreview", { link = "Selection" })
   end,
 }
