@@ -61,21 +61,21 @@ function M.config()
   vim.api.nvim_create_user_command("FindFileGitRoot", find_file_git_root, {})
 
   local wk = require("which-key")
-  wk.register({
-    ["<leader>fb"] = { "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", "Find buffers" },
-    ["<leader>fc"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    ["<leader>ff"] = { "<cmd>FindFileGitRoot<cr>", "Find files" },
-    ["<leader>fk"] = { "<cmd>Telescope keymaps<cr>", "Find keymaps" },
-    ["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-    ["<leader>fw"] = { "<cmd>LiveGrepGitRoot<cr>", "Find Words" },
-    ["<leader>fs"] = { "<cmd>Telescope grep_string<cr>", "Find the string under cursor" },
-    ["<leader>fg"] = { "<cmd>Telescope git_branches<cr>", "Checkout git branch" },
-    ["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
-    ["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
-    ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+  wk.add({
+    { "<leader>fb", "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", desc = "Find buffers" },
+    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+    { "<leader>ff", "<cmd>FindFileGitRoot<cr>", desc = "Find files" },
+    { "<leader>fg", "<cmd>Telescope git_branches<cr>", desc = "Checkout git branch" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find keymaps" },
+    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    { "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "Projects" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+    { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find the string under cursor" },
+    { "<leader>fw", "<cmd>LiveGrepGitRoot<cr>", desc = "Find Words" },
   })
-  wk.register({
-    ["<leader>fs"] = { "<cmd>Telescope grep_string<cr>", "Find the visual selection", mode = "v" },
+  wk.add({
+    { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find the visual selection", mode = "v" },
   })
 
   local icons = require("user.icons")

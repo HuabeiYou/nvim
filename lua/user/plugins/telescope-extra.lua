@@ -22,10 +22,11 @@ local M = {
     event = "VeryLazy",
     config = function()
       local wk = require("which-key")
-      wk.register({
-        ["<leader>ft"] = {
+      wk.add({
+        {
+          "<leader>ft",
           "<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
-          "Find Tabs",
+          desc = "Find Tabs",
         },
       })
       require("telescope-tabs").setup({

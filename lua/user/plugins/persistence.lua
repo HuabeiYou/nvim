@@ -11,10 +11,10 @@ function M.config()
     save_empty = false, -- don't save if there are no open file buffers
   })
   local wk = require("which-key")
-  wk.register({
-    ["<leader>Sr"] = { "<cmd>lua require('persistence').load()<cr>", "Restore Session" },
-    ["<leader>Sl"] = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore Last Session" },
-    ["<leader>Sd"] = { "<cmd>lua require('persistence').stop()<cr>", "Don't Save Current Session" },
+  wk.add({
+    { "<leader>Sd", "<cmd>lua require('persistence').stop()<cr>", desc = "Don't Save Current Session" },
+    { "<leader>Sl", "<cmd>lua require('persistence').load({ last = true })<cr>", desc = "Restore Last Session" },
+    { "<leader>Sr", "<cmd>lua require('persistence').load()<cr>", desc = "Restore Session" },
   })
 end
 

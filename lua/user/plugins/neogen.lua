@@ -13,27 +13,22 @@ return {
     })
 
     local wk = require("which-key")
-    wk.register({
-      n = {
-        name = "Generate",
-        f = {
-          function()
-            neogen.generate({ type = "func" })
-          end,
-          "Func Annotation",
-        },
-        t = {
-          function()
-            neogen.generate({ type = "type" })
-          end,
-          "Type Annotation",
-        },
-        c = {
-          function()
-            neogen.generate({ type = "class" })
-          end,
-          "Class Annotation",
-        },
+    wk.add({
+      { "<leader>n", group = "Generate" },
+      {
+        "<leader>nc",
+        ":lua require('neogen').generate({ type = 'class' })<CR>",
+        desc = "Class Annotation",
+      },
+      {
+        "<leader>nf",
+        ":lua require('neogen').generate({ type = 'func' })<CR>",
+        desc = "Func Annotation",
+      },
+      {
+        "<leader>nt",
+        ":lua require('neogen').generate({ type = 'type' })<CR>",
+        desc = "Type Annotation",
       },
     }, {
       mode = "n",

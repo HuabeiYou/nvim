@@ -1,11 +1,8 @@
 return {
   "folke/zen-mode.nvim",
   config = function()
-    require("which-key").register({
-      ["<leader>z"] = {
-        "<cmd>ZenMode<CR>",
-        "Toggle Zen Mode",
-      },
+    require("which-key").add({
+      { "<leader>z", "<cmd>ZenMode<CR>", desc = "Toggle Zen Mode" },
     })
     require("zen-mode").setup({
       window = {

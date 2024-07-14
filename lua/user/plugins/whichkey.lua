@@ -46,47 +46,39 @@ local M = {
 
 function M.config()
   local mappings = {
-    h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    [";"] = { "<cmd>ToggleTerm direction=float<CR>", "Terminal" },
-    v = { "<cmd>vsplit<CR>", "Split" },
-    a = {
-      name = "AI",
-      a = { "<cmd>NeoAI<CR>", "Toggle Chat Window" },
-    },
-    b = {
-      name = "Buffers",
-      b = { "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", "List Buffers" },
-      d = { "<cmd>bdelete<cr>", "Delete Buffer" },
-      n = { "<cmd>bnext<cr>", "Next Buffer" },
-      p = { "<cmd>bprevious<cr>", "Previous Buffer" },
-    },
-    d = { name = "Debug" },
-    f = { name = "Find" },
-    g = { name = "Git" },
-    l = { name = "LSP" },
-    p = { name = "Plugins" },
-    P = { "<cmd>lua require('telescope').extensions.projects.projects()<CR>", "Projects" },
-    t = {
-      name = "Tab",
-      a = { "<cmd>$tabnew<cr>", "Add Tab" },
-      c = { "<cmd>tabclose<cr>", "Close Tab" },
-      o = { "<cmd>tabonly<cr>", "Only" },
-      n = { "<cmd>tabn<cr>", "Next Tab" },
-      p = { "<cmd>tabp<cr>", "Previous Tab" },
-      h = { "<cmd>-tabmove<cr>", "Move Left" },
-      l = { "<cmd>+tabmove<cr>", "Move Right" },
-    },
-    S = { name = "Sessions" },
-    T = {
-      name = "Test",
-      t = { "<cmd>lua require'neotest'.run.run()<cr>", "Test Nearest" },
-      f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Test File" },
-      d = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Test" },
-      s = { "<cmd>lua require('neotest').run.stop()<cr>", "Test Stop" },
-      a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach Test" },
-    },
-    x = { name = "Trouble" },
-    Z = { name = "ZK" },
+    { "<leader>;", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal" },
+    { "<leader>P", "<cmd>lua require('telescope').extensions.projects.projects()<CR>", desc = "Projects" },
+    { "<leader>S", group = "Sessions" },
+    { "<leader>T", group = "Test" },
+    { "<leader>Ta", "<cmd>lua require('neotest').run.attach()<cr>", desc = "Attach Test" },
+    { "<leader>Td", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", desc = "Debug Test" },
+    { "<leader>Tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", desc = "Test File" },
+    { "<leader>Ts", "<cmd>lua require('neotest').run.stop()<cr>", desc = "Test Stop" },
+    { "<leader>Tt", "<cmd>lua require'neotest'.run.run()<cr>", desc = "Test Nearest" },
+    { "<leader>Z", group = "ZK" },
+    { "<leader>a", group = "AI" },
+    { "<leader>aa", "<cmd>NeoAI<CR>", desc = "Toggle Chat Window" },
+    { "<leader>b", group = "Buffers" },
+    { "<leader>bb", "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", desc = "List Buffers" },
+    { "<leader>bd", "<cmd>bdelete<cr>", desc = "Delete Buffer" },
+    { "<leader>bn", "<cmd>bnext<cr>", desc = "Next Buffer" },
+    { "<leader>bp", "<cmd>bprevious<cr>", desc = "Previous Buffer" },
+    { "<leader>d", group = "Debug" },
+    { "<leader>f", group = "Find" },
+    { "<leader>g", group = "Git" },
+    { "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
+    { "<leader>l", group = "LSP" },
+    { "<leader>p", group = "Plugins" },
+    { "<leader>t", group = "Tab" },
+    { "<leader>ta", "<cmd>$tabnew<cr>", desc = "Add Tab" },
+    { "<leader>tc", "<cmd>tabclose<cr>", desc = "Close Tab" },
+    { "<leader>th", "<cmd>-tabmove<cr>", desc = "Move Left" },
+    { "<leader>tl", "<cmd>+tabmove<cr>", desc = "Move Right" },
+    { "<leader>tn", "<cmd>tabn<cr>", desc = "Next Tab" },
+    { "<leader>to", "<cmd>tabonly<cr>", desc = "Only" },
+    { "<leader>tp", "<cmd>tabp<cr>", desc = "Previous Tab" },
+    { "<leader>v", "<cmd>vsplit<CR>", desc = "Split" },
+    { "<leader>x", group = "Trouble" },
   }
 
   local which_key = require("which-key")
@@ -95,7 +87,7 @@ function M.config()
     prefix = "<leader>",
   }
 
-  which_key.register(mappings, opts)
+  which_key.add(mappings, opts)
 end
 
 return M

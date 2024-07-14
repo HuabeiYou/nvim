@@ -28,16 +28,13 @@ return {
     })
 
     local wk = require("which-key")
-    wk.register({
-      ["<leader>Za"] = {
-        ":ZkNew { title = vim.fn.input('Title: ') }<CR>",
-        "Create a new note",
-      },
-      ["<leader>Zo"] = { ":ZkNotes { sort = { 'modified' } }<CR>", "Open notes" },
-      ["<leader>Zf"] = { ":ZkNotes { sort = { 'modified' }, match = vim.fn.input('Find: ') }<CR>", "Find notes" },
-      ["<leader>Zt"] = { ":ZkTags<CR>", "Open notes associated with the selected tags" },
-      ["<leader>Zb"] = { ":ZkBacklinks<CR>", "Open notes linking to the current buffer." },
-      ["<leader>Zl"] = { ":ZkLinks<CR>", "Open notes linked by the current buffer." },
+    wk.add({
+      { "<leader>Za", ":ZkNew { title = vim.fn.input('Title: ') }<CR>", desc = "Create a new note" },
+      { "<leader>Zb", ":ZkBacklinks<CR>", desc = "Open notes linking to the current buffer." },
+      { "<leader>Zf", ":ZkNotes { sort = { 'modified' }, match = vim.fn.input('Find: ') }<CR>", desc = "Find notes" },
+      { "<leader>Zl", ":ZkLinks<CR>", desc = "Open notes linked by the current buffer." },
+      { "<leader>Zo", ":ZkNotes { sort = { 'modified' } }<CR>", desc = "Open notes" },
+      { "<leader>Zt", ":ZkTags<CR>", desc = "Open notes associated with the selected tags" },
     })
   end,
 }
