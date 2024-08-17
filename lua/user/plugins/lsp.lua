@@ -29,6 +29,7 @@ local M = {
             typescriptreact = { "prettierd" },
             javascriptreact = { "prettierd" },
             handlebars = { "prettierd" },
+            rust = { "rustfmt" },
           },
         })
       end,

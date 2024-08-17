@@ -46,7 +46,7 @@ local M = {
 
 function M.config()
   local mappings = {
-    { "<leader>;", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal" },
+    { "<leader>;", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Terminal" },
     { "<leader>P", "<cmd>lua require('telescope').extensions.projects.projects()<CR>", desc = "Projects" },
     { "<leader>S", group = "Sessions" },
     { "<leader>T", group = "Test" },
