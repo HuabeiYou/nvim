@@ -1,3 +1,11 @@
+if vim.env.VSCODE then
+  vim.g.vscode = true
+end
+
+if vim.loader then
+  vim.loader.enable()
+end
+
 require("user.options")
 require("user.keymaps")
 require("user.autocmds")
@@ -37,7 +45,6 @@ local plugins_enabled = {
   "zen-mode",
   "zk-nvim",
   "navic",
-  "navbuddy",
   "undotree",
   "cloak",
   "mini",

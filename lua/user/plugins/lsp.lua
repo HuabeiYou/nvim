@@ -59,7 +59,7 @@ function M.config()
       "marksman",
       "gopls",
       "pyright",
-      "tsserver",
+      "ts_ls",
     },
     automatic_installation = {
       exclude = { "rust_analyzer" },

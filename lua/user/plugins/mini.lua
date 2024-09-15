@@ -27,11 +27,11 @@ return {
     end
     local starter = require("mini.starter")
     starter.setup({
+      silent = true,
       evaluate_single = true,
       footer = table.concat(require("fortune").get_fortune()),
       header = "",
       items = {
-        new_section("Find file", "Telescope find_files", "Telescope"),
         new_section("Word", "Telescope live_grep", "Telescope"),
         new_section("Projects", "Telescope projects", "Telescope"),
         new_section("Recent files", "Telescope oldfiles", "Telescope"),
