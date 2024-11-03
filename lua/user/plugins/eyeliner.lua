@@ -8,6 +8,14 @@ function M.config()
   require("eyeliner").setup({
     highlight_on_key = true,
     dim = true,
+    -- filetypes for which eyeliner should be disabled;
+    -- e.g., to disable on help files:
+    -- disabled_filetypes = {"help"}
+    disabled_filetypes = { "help", "Starter" },
+
+    -- buftypes for which eyeliner should be disabled
+    -- e.g., disabled_buftypes = {"nofile"}
+    disabled_buftypes = { "nofile", "nowrite" },
   })
 end
 

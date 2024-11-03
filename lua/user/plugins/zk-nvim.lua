@@ -12,13 +12,10 @@ return {
         config = {
           cmd = { "zk", "lsp" },
           name = "zk",
-          capabilities = lspconfig.common_capabilities(),
-          on_attach = function(client, bufnr)
-            lspconfig.on_attach(client, bufnr)
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-          end,
+          -- on_attach = ...
+          -- etc, see `:h vim.lsp.start_client()`
         },
+
         -- automatically attach buffers in a zk notebook that match the given filetypes
         auto_attach = {
           enabled = true,

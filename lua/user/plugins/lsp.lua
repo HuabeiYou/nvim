@@ -11,29 +11,6 @@ local M = {
         suppress_on_insert = false,
       },
     } },
-    {
-      "stevearc/conform.nvim",
-      config = function()
-        require("conform").setup({
-          formatters_by_ft = {
-            lua = { "stylua" },
-            go = { "goimports", "gofmt" },
-            python = { "isort", "black" },
-            sh = { "shfmt" },
-            bash = { "shfmt" },
-            zsh = { "shfmt" },
-            html = { "prettierd" },
-            css = { "prettierd" },
-            javascript = { "prettierd" },
-            typescript = { "prettierd" },
-            typescriptreact = { "prettierd" },
-            javascriptreact = { "prettierd" },
-            handlebars = { "prettierd" },
-            rust = { "rustfmt" },
-          },
-        })
-      end,
-    },
   },
 }
 
@@ -59,6 +36,7 @@ function M.config()
       "marksman",
       "gopls",
       "pyright",
+      "ruff",
       "ts_ls",
     },
     automatic_installation = {
@@ -118,14 +96,14 @@ function M.config()
       -- Jump to the definition of the word under your cursor.
       --  This is where a variable was first declared, or where a function is defined, etc.
       --  To jump back, press <C-T>.
-      map("n", "gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+      map("n", "gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 
       -- Find references for the word under your cursor.
-      map("n", "gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+      map("n", "gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 
       -- Jump to the implementation of the word under your cursor.
       --  Useful when your language has ways of declaring types without an actual implementation.
-      map("n", "gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+      map("n", "gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 
       -- Jump to the type of the word under your cursor.
       --  Useful when you're not sure what type a variable is and you want to see
@@ -187,6 +165,21 @@ function M.config()
         })
       end
     end,
+  })
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if client == nil then
+        return
+      end
+      if client.name == "ruff" then
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+      end
+    end,
+    desc = "LSP: Disable hover capability from Ruff",
   })
 
   local icons = require("user.icons")

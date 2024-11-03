@@ -1,5 +1,7 @@
 local M = {
   "nvim-telescope/telescope.nvim",
+  lazy = false,
+  priority = 1000,
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
@@ -62,9 +64,9 @@ function M.config()
 
   local wk = require("which-key")
   wk.add({
+    { "<leader><leader>", "<cmd>FindFileGitRoot<cr>", desc = "Find files" },
     { "<leader>fb", "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", desc = "Find buffers" },
     { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
-    { "<leader>ff", "<cmd>FindFileGitRoot<cr>", desc = "Find files" },
     { "<leader>fg", "<cmd>Telescope git_branches<cr>", desc = "Checkout git branch" },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find keymaps" },
