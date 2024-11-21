@@ -13,31 +13,28 @@ return {
         DELEGATED = ":background #FFFFFF :slant italic :underline on",
         TODO = ":background #000000 :foreground red", -- overrides builtin color for `TODO` keyword
       },
-      -- org_todo_keywords = { "TODO", "WAITING", "|", "DONE", "DELEGATED" },
-      -- org_capture_templates = {
-      --   t = {
-      --     description = "Todo",
-      --     template = "* TODO %?\n %u",
-      --     target = "~/org/todo.org",
-      --   },
-      --   e = {
-      --     description = "Event",
-      --     subtemplates = {
-      --       r = {
-      --         description = "recurring",
-      --         template = "** %?\n %T",
-      --         target = "~/org/calendar.org",
-      --         headline = "recurring",
-      --       },
-      --       o = {
-      --         description = "one-time",
-      --         template = "** %?\n %T",
-      --         target = "~/org/calendar.org",
-      --         headline = "one-time",
-      --       },
-      --     },
-      --   },
-      -- },
+      org_capture_templates = {
+        t = {
+          description = "Todo",
+          template = "* TODO %?\n %u",
+          target = "~/org/todo.org",
+        },
+        e = {
+          description = "Event",
+          subtemplates = {
+            r = {
+              description = "recurring",
+              template = "** %?\n %T",
+              target = "~/org/calendar.org",
+            },
+            o = {
+              description = "one-time",
+              template = "** %?\n %T",
+              target = "~/org/calendar.org",
+            },
+          },
+        },
+      },
     })
   end,
 }
