@@ -35,6 +35,7 @@ local plugins_enabled = {
   "todo-comments",
   "colorizer",
   "dressing",
+  "eyeliner",
   "flash",
   "fugitive",
   "trouble",

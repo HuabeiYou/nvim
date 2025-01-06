@@ -64,10 +64,17 @@ function M.config()
 
   local wk = require("which-key")
   wk.add({
-    { "<leader><leader>", "<cmd>FindFileGitRoot<cr>", desc = "Find files" },
+    -- { "<leader>ff", "<cmd>FindFileGitRoot<cr>", desc = "Find files" },
+    {
+      "<leader>ff",
+      function()
+        return require("telescope.builtin").git_files({ cwd = vim.fn.expand("%:h") })
+      end,
+      desc = "Find git files",
+    },
+    { "<leader>fd", "<cmd>Telescope find_files<cr>", desc = "Find files" },
     { "<leader>fb", "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", desc = "Find buffers" },
     { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
-    { "<leader>fg", "<cmd>Telescope git_branches<cr>", desc = "Checkout git branch" },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find keymaps" },
     { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
@@ -82,6 +89,7 @@ function M.config()
 
   local icons = require("user.icons")
   local actions = require("telescope.actions")
+  local data = assert(vim.fn.stdpath("data")) --[[@as string]]
 
   local open_with_trouble = require("trouble.sources.telescope").open
   -- Use this to add more results without clearing the trouble list
@@ -89,6 +97,7 @@ function M.config()
 
   require("telescope").setup({
     defaults = {
+      file_ignore_patterns = { "yarn.lock", "package-lock.json", "*.csv" },
       prompt_prefix = icons.ui.Telescope .. " ",
       selection_caret = icons.ui.Forward .. " ",
       entry_prefix = "   ",
@@ -129,19 +138,24 @@ function M.config()
     },
     pickers = {
       help_tags = {
-        theme = "dropdown",
+        theme = "ivy",
       },
 
       live_grep = {
-        theme = "dropdown",
+        theme = "ivy",
       },
 
       grep_string = {
-        theme = "dropdown",
+        theme = "ivy",
         initial_mode = "normal",
       },
 
       find_files = {
+        theme = "dropdown",
+        previewer = false,
+      },
+
+      git_files = {
         theme = "dropdown",
         previewer = false,
       },
@@ -170,22 +184,22 @@ function M.config()
       },
 
       lsp_references = {
-        theme = "dropdown",
+        theme = "ivy",
         initial_mode = "normal",
       },
 
       lsp_definitions = {
-        theme = "dropdown",
+        theme = "ivy",
         initial_mode = "normal",
       },
 
       lsp_declarations = {
-        theme = "dropdown",
+        theme = "ivy",
         initial_mode = "normal",
       },
 
       lsp_implementations = {
-        theme = "dropdown",
+        theme = "ivy",
         initial_mode = "normal",
       },
     },
@@ -196,13 +210,18 @@ function M.config()
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
-      -- ["ui-select"] = {
-      --   require("telescope.themes").get_dropdown(),
-      -- },
+      history = {
+        path = vim.fs.joinpath(data, "telescope_history.sqlite3"),
+        limit = 100,
+      },
+      ["ui-select"] = {
+        require("telescope.themes").get_dropdown({}),
+      },
     },
   })
   pcall(require("telescope").load_extension, "fzf")
-  -- pcall(require("telescope").load_extension, "ui-select")
+  pcall(require("telescope").load_extension, "smart_history")
+  pcall(require("telescope").load_extension, "ui-select")
 end
 
 return M

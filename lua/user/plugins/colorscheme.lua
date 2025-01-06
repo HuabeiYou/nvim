@@ -114,6 +114,7 @@ local M = {
           "Outline",
         },
         on_colors = function(colors)
+          colors.black = "#16161e"
           colors.bg = colors.black
         end,
         on_highlights = function(hl, c)

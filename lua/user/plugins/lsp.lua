@@ -64,13 +64,13 @@ function M.config()
     desc = "Show diagnostic in float window",
   })
   vim.keymap.set("n", "[d", function()
-    vim.diagnostic.goto_prev()
+    vim.diagnostic.jump({ count = -1, float = true })
     vim.cmd("normal! zz")
   end, {
     desc = "Go to previous diagnostic",
   })
   vim.keymap.set("n", "]d", function()
-    vim.diagnostic.goto_next()
+    vim.diagnostic.jump({ count = 1, float = true })
     vim.cmd("normal! zz")
   end, {
     desc = "Go to next diagnostic",
