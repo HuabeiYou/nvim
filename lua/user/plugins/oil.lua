@@ -2,8 +2,8 @@ local M = {
   "stevearc/oil.nvim",
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  commit = "8bb35eb81a48f14c4a1ef480c2bbb87ceb7cd8bb",
-  pin = true
+  -- commit = "8bb35eb81a48f14c4a1ef480c2bbb87ceb7cd8bb",
+  -- pin = true
 }
 
 function M.config()
@@ -47,6 +47,8 @@ function M.config()
     -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
     cleanup_delay_ms = 2000,
     lsp_file_methods = {
+      -- Enable or disable LSP file operations
+      enabled = true,
       -- Time to wait for LSP file operations to complete before skipping
       timeout_ms = 1000,
       -- Set to true to autosave buffers that are updated with LSP willRenameFiles
@@ -63,23 +65,23 @@ function M.config()
     -- Set to `false` to remove a keymap
     -- See :help oil-actions for a list of all available actions
     keymaps = {
-      ["<leader>e"] = "actions.close",
-      ["g?"] = "actions.show_help",
+      ["<leader>-"] = "actions.close",
+      ["g?"] = { "actions.show_help", mode = "n" },
       ["<CR>"] = "actions.select",
-      ["<C-s>"] = "actions.select_vsplit",
-      ["<C-h>"] = "actions.select_split",
-      ["<C-t>"] = "actions.select_tab",
+      ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+      ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+      ["<C-t>"] = { "actions.select", opts = { tab = true } },
       ["<C-p>"] = "actions.preview",
-      ["<C-c>"] = "actions.close",
+      ["<C-c>"] = { "actions.close", mode = "n" },
       ["<C-l>"] = "actions.refresh",
-      ["-"] = "actions.parent",
-      ["_"] = "actions.open_cwd",
-      ["`"] = "actions.cd",
-      ["~"] = "actions.tcd",
-      ["gs"] = "actions.change_sort",
+      ["-"] = { "actions.parent", mode = "n" },
+      ["_"] = { "actions.open_cwd", mode = "n" },
+      ["`"] = { "actions.cd", mode = "n" },
+      ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+      ["gs"] = { "actions.change_sort", mode = "n" },
       ["gx"] = "actions.open_external",
-      ["g."] = "actions.toggle_hidden",
-      ["g\\"] = "actions.toggle_trash",
+      ["g."] = { "actions.toggle_hidden", mode = "n" },
+      ["g\\"] = { "actions.toggle_trash", mode = "n" },
     },
     -- Set to false to disable all of the above keymaps
     use_default_keymaps = true,
@@ -157,7 +159,7 @@ function M.config()
       },
     },
   })
-  vim.keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open directory explorer" })
+  vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open directory explorer" })
 end
 
 return M
