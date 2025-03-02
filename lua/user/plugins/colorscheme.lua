@@ -1,4 +1,33 @@
 local M = {
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
+        contrast = "hard",
+        dim_inactive = false,
+        transparent_mode = false,
+        bold = false,
+        palette_overrides = {
+          bright_green = "#a9bb26",
+        },
+        overrides = {
+          Function = { link = "GruvboxAqua" },
+          Delimiter = { link = "GruvboxFg2" },
+          SignColumn = { link = "GruvboxFg0" },
+          DiagnosticSignError = { link = "GruvboxRed" },
+          DiagnosticSignWarn = { link = "GruvboxYellow" },
+          DiagnosticSignOk = { link = "GruvboxGreen" },
+          DiagnosticSignInfo = { link = "GruvboxBlue" },
+          DiagnosticSignHint = { link = "GruvboxAqua" },
+          MiniStarterItemBullet = { link = "GruvboxBlue" },
+          MiniStarterSection = { link = "GruvboxBlue" },
+        },
+      })
+      vim.cmd.colorscheme("gruvbox")
+    end,
+  },
   -- {
   --   "sainnhe/sonokai",
   --   lazy = false,
@@ -93,48 +122,48 @@ local M = {
   --     vim.cmd.colorscheme("catppuccin")
   --   end,
   -- },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      require("tokyonight").setup({
-        style = "moon",
-        -- transparent = true,
-        -- styles = {
-        --   sidebars = "transparent",
-        --   floats = "transparent",
-        -- },
-        sidebars = {
-          "qf",
-          "vista_kind",
-          "terminal",
-          "spectre_panel",
-          "startuptime",
-          "Outline",
-        },
-        on_colors = function(colors)
-          colors.black = "#16161e"
-          colors.bg = colors.black
-        end,
-        on_highlights = function(hl, c)
-          -- hl.CursorLineNr = { fg = c.orange, bold = true }
-          -- hl.LineNr = { fg = c.orange, bold = true }
-          -- hl.LineNrAbove = { fg = c.fg_gutter }
-          -- hl.LineNrBelow = { fg = c.fg_gutter }
-          -- local prompt = "#2d3149"
-          -- hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
-          -- hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
-          -- hl.TelescopePromptNormal = { bg = prompt }
-          -- hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
-          -- hl.TelescopePromptTitle = { bg = c.fg_gutter, fg = c.orange }
-          -- hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
-          -- hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
-        end,
-      })
-      vim.cmd.colorscheme("tokyonight")
-    end,
-  },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     require("tokyonight").setup({
+  --       style = "moon",
+  --       -- transparent = true,
+  --       -- styles = {
+  --       --   sidebars = "transparent",
+  --       --   floats = "transparent",
+  --       -- },
+  --       sidebars = {
+  --         "qf",
+  --         "vista_kind",
+  --         "terminal",
+  --         "spectre_panel",
+  --         "startuptime",
+  --         "Outline",
+  --       },
+  --       on_colors = function(colors)
+  --         colors.black = "#16161e"
+  --         colors.bg = colors.black
+  --       end,
+  --       on_highlights = function(hl, c)
+  --         -- hl.CursorLineNr = { fg = c.orange, bold = true }
+  --         -- hl.LineNr = { fg = c.orange, bold = true }
+  --         -- hl.LineNrAbove = { fg = c.fg_gutter }
+  --         -- hl.LineNrBelow = { fg = c.fg_gutter }
+  --         -- local prompt = "#2d3149"
+  --         -- hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
+  --         -- hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
+  --         -- hl.TelescopePromptNormal = { bg = prompt }
+  --         -- hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
+  --         -- hl.TelescopePromptTitle = { bg = c.fg_gutter, fg = c.orange }
+  --         -- hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
+  --         -- hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
+  --       end,
+  --     })
+  --     vim.cmd.colorscheme("tokyonight")
+  --   end,
+  -- },
   -- {
   --   "rebelot/kanagawa.nvim",
   --   lazy = false, -- make sure we load this during startup if it is your main colorscheme

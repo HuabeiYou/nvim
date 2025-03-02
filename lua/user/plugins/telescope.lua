@@ -65,14 +65,14 @@ function M.config()
   local wk = require("which-key")
   wk.add({
     -- { "<leader>ff", "<cmd>FindFileGitRoot<cr>", desc = "Find files" },
-    {
-      "<leader>ff",
-      function()
-        return require("telescope.builtin").git_files({ cwd = vim.fn.expand("%:h") })
-      end,
-      desc = "Find git files",
-    },
-    { "<leader>fd", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+    -- {
+    --   "<leader>ff",
+    --   function()
+    --     return require("telescope.builtin").git_files({ cwd = vim.fn.expand("%:h") })
+    --   end,
+    --   desc = "Find git files",
+    -- },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
     { "<leader>fb", "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", desc = "Find buffers" },
     { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
