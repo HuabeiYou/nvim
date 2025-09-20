@@ -21,6 +21,7 @@ local plugins_enabled = {
   "autopairs",
   "autotag",
   "harpoon",
+  -- "lualine",
   "dial",
   "telescope-extra",
   "rustaceanvim",
@@ -52,9 +53,9 @@ local plugins_enabled = {
   "neogen",
   "markdown-preview",
   "nvim-surround",
-  "neoai",
   "dadbod",
   "tmux",
+  "rainbow-delimiters",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
