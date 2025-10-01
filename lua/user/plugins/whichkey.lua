@@ -7,7 +7,7 @@ local M = {
   end,
   opts = {
     plugins = {
-      marks = true,
+      -- marks = true,
       registers = true,
       spelling = {
         enabled = true,

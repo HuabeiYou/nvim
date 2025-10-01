@@ -30,7 +30,7 @@ local plugins_enabled = {
   "toggleterm",
   "gitsigns",
   "tabby",
-  "bqf",
+  "quickfix",
   "matchup",
   "comment",
   "todo-comments",
