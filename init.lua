@@ -56,6 +56,7 @@ local plugins_enabled = {
   "dadbod",
   "tmux",
   "rainbow-delimiters",
+  "lazydev",
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

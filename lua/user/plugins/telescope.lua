@@ -12,7 +12,6 @@ local M = {
         return vim.fn.executable("make") == 1
       end,
     },
-    -- { "nvim-telescope/telescope-ui-select.nvim" },
   },
 }
 
@@ -82,6 +81,11 @@ function M.config()
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
     { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find the string under cursor" },
     { "<leader>fw", "<cmd>LiveGrepGitRoot<cr>", desc = "Find Words" },
+    {
+      "<C-TAB>",
+      "<cmd>Telescope buffers previewer=false only_cwd=true sort_mru=true ignore_current_buffer=true<cr>",
+      desc = "Find buffers",
+    },
   })
   wk.add({
     { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find the visual selection", mode = "v" },
@@ -214,14 +218,10 @@ function M.config()
         path = vim.fs.joinpath(data, "telescope_history.sqlite3"),
         limit = 100,
       },
-      ["ui-select"] = {
-        require("telescope.themes").get_dropdown({}),
-      },
     },
   })
   pcall(require("telescope").load_extension, "fzf")
   pcall(require("telescope").load_extension, "smart_history")
-  pcall(require("telescope").load_extension, "ui-select")
 end
 
 return M

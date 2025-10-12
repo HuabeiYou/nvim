@@ -18,19 +18,25 @@ local function toggle_quick_menu()
 end
 
 function M.config()
-  require("harpoon"):setup({
+  local harpoon = require("harpoon")
+  harpoon:setup({
     settings = {
-      save_on_toggle = true,
+      save_on_toggle = false,
       sync_on_ui_close = true,
     },
   })
-  local keymap = vim.keymap.set
-  local opts = { noremap = true, silent = true }
-
-  keymap("n", "<S-m>", mark_file, opts)
-  keymap("n", "<S-l>", "<cmd>lua require('harpoon'):list():next()<cr>", opts)
-  keymap("n", "<S-h>", "<cmd>lua require('harpoon'):list():prev()<cr>", opts)
-  keymap("n", "<S-TAB>", toggle_quick_menu, opts)
+  require("which-key").add({
+    { "<S-m>", mark_file, { desc = "Harpoon: Mark file" } },
+    { "<S-l>", "<cmd>lua require('harpoon'):list():next()<cr>", { desc = "Harpoon: Go to previous file" } },
+    { "<S-h>", "<cmd>lua require('harpoon'):list():prev()<cr>", { desc = "Harpoon: Go to next file" } },
+    {
+      "<S-TAB>",
+      function()
+        toggle_quick_menu()
+      end,
+      { desc = "Open harpoon list" },
+    },
+  })
 end
 
 return M
