@@ -29,7 +29,7 @@
   "mini.nvim": { "branch": "main", "commit": "94cae4660a8b2d95dbbd56e1fbc6fcfa2716d152" },
   "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
   "neogen": { "branch": "main", "commit": "b2e78708876f4da507839726816010a68e33fec8" },
-  "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
+  "nvim-autopairs": { "branch": "master", "commit": "7a2c97cccd60abc559344042fefb1d5a85b3e33b" },
   "nvim-bqf": { "branch": "main", "commit": "a77b17e39b1b707b6feee86a36c83703c1534c08" },
   "nvim-cmp": { "branch": "main", "commit": "b5311ab3ed9c846b585c0c15b7559be131ec4be9" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "51cf7c995ed1eb6642aecf19067ee634fa1b6ba2" },
@@ -50,7 +50,7 @@
   "quicker.nvim": { "branch": "master", "commit": "12a2291869a326424b1cbee937f4f80334433012" },
   "rainbow-delimiters.nvim": { "branch": "patch/fix-regtype", "commit": "0bb6ba3149b14e446509a46ba1efc8a841e5dbdb" },
   "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
-  "schemastore.nvim": { "branch": "main", "commit": "155d57353fbf0f9b0b8b7cdd7f8a7ee44bb7cd69" },
+  "schemastore.nvim": { "branch": "main", "commit": "caad5439cc80809be7475b625a5e36d1bb06cc7e" },
   "tabby.nvim": { "branch": "main", "commit": "b3affa6db7eab80fca2a2db5b73b473144507039" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "1f08ed60cafc8f6168b72b80be2b2ea149813e55" },
   "telescope-tabs": { "branch": "master", "commit": "777b1f630f3d6a12a2e71635a82581c988d6da2e" },
@@ -71,5 +71,5 @@
   "vscode.nvim": { "branch": "main", "commit": "cb9df0873c10a21d05362455ae3bb355eadcef6b" },
   "which-key.nvim": { "branch": "main", "commit": "b4177e3eaf15fe5eb8357ebac2286d488be1ed00" },
   "zen-mode.nvim": { "branch": "main", "commit": "438a59c33763d79e34ceb394e012c3bfd6aa1084" },
-  "zk-nvim": { "branch": "main", "commit": "8e0446f448e03dfe76ab671724f4c8db7a46cd37" }
+  "zk-nvim": { "branch": "main", "commit": "575c3e8242d925c87e9a11fd7d304bc223d2f096" }
 }

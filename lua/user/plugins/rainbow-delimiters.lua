@@ -12,13 +12,9 @@ local M = {
         latex = "rainbow-blocks",
       },
       highlight = {
-        "RainbowDelimiterRed",
         "RainbowDelimiterYellow",
+        "RainbowDelimiterRed",
         "RainbowDelimiterBlue",
-        "RainbowDelimiterOrange",
-        "RainbowDelimiterGreen",
-        "RainbowDelimiterViolet",
-        "RainbowDelimiterCyan",
       },
       blacklist = { "c", "cpp" },
     })
