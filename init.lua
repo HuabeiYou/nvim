@@ -24,7 +24,7 @@ local plugins_enabled = {
   -- "lualine",
   "dial",
   "telescope-extra",
-  "rustaceanvim",
+  -- "rustaceanvim",
   "devicons",
   "oil",
   "toggleterm",

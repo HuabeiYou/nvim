@@ -19,6 +19,7 @@ local M = {
           MiniStarterItemPrefix = { link = "Error" },
           MiniStarterFooter = { link = "Comment" },
           NormalFloat = { bg = c.vscContext },
+          -- StatusLineNC = { bg = c.vscContext },
           Pmenu = { bg = c.vscContext, fg = c.vscPopupFront },
         },
       })
