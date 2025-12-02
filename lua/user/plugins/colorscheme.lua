@@ -1,60 +1,60 @@
 local M = {
-  {
-    "Mofiqul/vscode.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      local c = require("vscode.colors").get_colors()
-      require("vscode").setup({
-        transparent = false,
-        -- Override colors (see ./lua/vscode/colors.lua)
-        color_overrides = {},
-
-        -- Override highlight groups (see ./lua/vscode/theme.lua)
-        group_overrides = {
-          -- this supports the same val table as vim.api.nvim_set_hl
-          -- use colors from this colorscheme by requiring vscode.colors!
-          MiniIndentscopeSymbol = { link = "@variable" },
-          MiniStarterSection = { link = "@keyword" },
-          MiniStarterItemPrefix = { link = "Error" },
-          MiniStarterFooter = { link = "Comment" },
-          NormalFloat = { bg = c.vscContext },
-          -- StatusLineNC = { bg = c.vscContext },
-          Pmenu = { bg = c.vscContext, fg = c.vscPopupFront },
-        },
-      })
-      vim.cmd.colorscheme("vscode")
-    end,
-  },
   -- {
-  --   "ellisonleao/gruvbox.nvim",
+  --   "Mofiqul/vscode.nvim",
   --   lazy = false,
   --   priority = 1000,
   --   config = function()
-  --     require("gruvbox").setup({
-  --       contrast = "hard",
-  --       dim_inactive = false,
-  --       transparent_mode = false,
-  --       bold = false,
-  --       palette_overrides = {
-  --         bright_green = "#a9bb26",
-  --       },
-  --       overrides = {
-  --         Function = { link = "GruvboxAqua" },
-  --         Delimiter = { link = "GruvboxFg2" },
-  --         SignColumn = { link = "GruvboxFg0" },
-  --         DiagnosticSignError = { link = "GruvboxRed" },
-  --         DiagnosticSignWarn = { link = "GruvboxYellow" },
-  --         DiagnosticSignOk = { link = "GruvboxGreen" },
-  --         DiagnosticSignInfo = { link = "GruvboxBlue" },
-  --         DiagnosticSignHint = { link = "GruvboxAqua" },
-  --         MiniStarterItemBullet = { link = "GruvboxBlue" },
-  --         MiniStarterSection = { link = "GruvboxBlue" },
+  --     local c = require("vscode.colors").get_colors()
+  --     require("vscode").setup({
+  --       transparent = false,
+  --       -- Override colors (see ./lua/vscode/colors.lua)
+  --       color_overrides = {},
+  --
+  --       -- Override highlight groups (see ./lua/vscode/theme.lua)
+  --       group_overrides = {
+  --         -- this supports the same val table as vim.api.nvim_set_hl
+  --         -- use colors from this colorscheme by requiring vscode.colors!
+  --         MiniIndentscopeSymbol = { link = "@variable" },
+  --         MiniStarterSection = { link = "@keyword" },
+  --         MiniStarterItemPrefix = { link = "Error" },
+  --         MiniStarterFooter = { link = "Comment" },
+  --         NormalFloat = { bg = c.vscContext },
+  --         -- StatusLineNC = { bg = c.vscContext },
+  --         Pmenu = { bg = c.vscContext, fg = c.vscPopupFront },
   --       },
   --     })
-  --     vim.cmd.colorscheme("gruvbox")
+  --     vim.cmd.colorscheme("vscode")
   --   end,
   -- },
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
+        contrast = "hard",
+        dim_inactive = false,
+        transparent_mode = false,
+        bold = false,
+        palette_overrides = {
+          -- bright_green = "#a9bb26",
+        },
+        overrides = {
+          Function = { link = "GruvboxAqua" },
+          Delimiter = { link = "GruvboxFg2" },
+          SignColumn = { link = "GruvboxFg0" },
+          DiagnosticSignError = { link = "GruvboxRed" },
+          DiagnosticSignWarn = { link = "GruvboxYellow" },
+          DiagnosticSignOk = { link = "GruvboxGreen" },
+          DiagnosticSignInfo = { link = "GruvboxBlue" },
+          DiagnosticSignHint = { link = "GruvboxAqua" },
+          MiniStarterItemBullet = { link = "GruvboxBlue" },
+          MiniStarterSection = { link = "GruvboxBlue" },
+        },
+      })
+      vim.cmd.colorscheme("gruvbox")
+    end,
+  },
   -- {
   --   "sainnhe/sonokai",
   --   lazy = false,
