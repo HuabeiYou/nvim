@@ -26,6 +26,7 @@ return {
         javascriptreact = { "prettierd" },
         handlebars = { "prettierd" },
         rust = { "rustfmt" },
+        lisp = { "cljfmt" },
       },
     })
     vim.keymap.set("", "<M-F>", function()

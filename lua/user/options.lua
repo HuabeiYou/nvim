@@ -48,6 +48,7 @@ vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append({
   stl = " ",
 })
+vim.g.python3_host_prog = os.getenv("HOME") .. "/.pyenv/versions/neovim-py/bin/python"
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])

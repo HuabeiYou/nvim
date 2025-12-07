@@ -1,5 +1,5 @@
 local M = {
-  "ClSlaid/rainbow-delimiters.nvim",
+  "HiPhish/rainbow-delimiters.nvim",
   config = function()
     local rainbow = require("rainbow-delimiters")
     require("rainbow-delimiters.setup").setup({
