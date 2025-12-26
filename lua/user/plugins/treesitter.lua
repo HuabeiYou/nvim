@@ -16,7 +16,7 @@ local M = {
     },
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = {},
+        ensure_installed = "all",
         ignore_install = { "org" },
         sync_install = false,
         highlight = {

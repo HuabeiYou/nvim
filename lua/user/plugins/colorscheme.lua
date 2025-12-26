@@ -1,4 +1,14 @@
 local M = {
+  {
+    "base16.nvim",
+    dir = "~/.config/nvim/lua/user/colors/base16.nvim",
+    lazy = false,
+    priority = 1000,
+    dependencies = { "echasnovski/mini.nvim" },
+    config = function()
+      require("base16").setup()
+    end,
+  },
   -- {
   --   "Mofiqul/vscode.nvim",
   --   lazy = false,
@@ -26,35 +36,42 @@ local M = {
   --     vim.cmd.colorscheme("vscode")
   --   end,
   -- },
-  {
-    "ellisonleao/gruvbox.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("gruvbox").setup({
-        contrast = "hard",
-        dim_inactive = false,
-        transparent_mode = false,
-        bold = false,
-        palette_overrides = {
-          -- bright_green = "#a9bb26",
-        },
-        overrides = {
-          Function = { link = "GruvboxAqua" },
-          Delimiter = { link = "GruvboxFg2" },
-          SignColumn = { link = "GruvboxFg0" },
-          DiagnosticSignError = { link = "GruvboxRed" },
-          DiagnosticSignWarn = { link = "GruvboxYellow" },
-          DiagnosticSignOk = { link = "GruvboxGreen" },
-          DiagnosticSignInfo = { link = "GruvboxBlue" },
-          DiagnosticSignHint = { link = "GruvboxAqua" },
-          MiniStarterItemBullet = { link = "GruvboxBlue" },
-          MiniStarterSection = { link = "GruvboxBlue" },
-        },
-      })
-      vim.cmd.colorscheme("gruvbox")
-    end,
-  },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("gruvbox").setup({
+  --       contrast = "hard",
+  --       dim_inactive = false,
+  --       transparent_mode = false,
+  --       italic = {
+  --         strings = false,
+  --         comments = false,
+  --         operators = false,
+  --         folds = false,
+  --         emphasis = false,
+  --       },
+  --       bold = true,
+  --       palette_overrides = {
+  --         bright_green = "#a9bb26",
+  --       },
+  --       overrides = {
+  --         Function = { link = "GruvboxAqua" },
+  --         Delimiter = { link = "GruvboxFg2" },
+  --         SignColumn = { link = "GruvboxFg0" },
+  --         DiagnosticSignError = { link = "GruvboxRed" },
+  --         DiagnosticSignWarn = { link = "GruvboxYellow" },
+  --         DiagnosticSignOk = { link = "GruvboxGreen" },
+  --         DiagnosticSignInfo = { link = "GruvboxBlue" },
+  --         DiagnosticSignHint = { link = "GruvboxAqua" },
+  --         MiniStarterItemBullet = { link = "GruvboxBlue" },
+  --         MiniStarterSection = { link = "GruvboxBlue" },
+  --       },
+  --     })
+  --     vim.cmd.colorscheme("gruvbox")
+  --   end,
+  -- },
   -- {
   --   "sainnhe/sonokai",
   --   lazy = false,
