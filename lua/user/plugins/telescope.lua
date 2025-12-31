@@ -61,6 +61,15 @@ function M.config()
   end
   vim.api.nvim_create_user_command("FindFileGitRoot", find_file_git_root, {})
 
+  local function switch_to_mru_buffer()
+    local buf = vim.fn.bufnr("#")
+    if buf == -1 or not vim.api.nvim_buf_is_valid(buf) or not vim.bo[buf].buflisted then
+      return false
+    end
+    vim.api.nvim_set_current_buf(buf)
+    return true
+  end
+
   local wk = require("which-key")
   wk.add({
     -- { "<leader>ff", "<cmd>FindFileGitRoot<cr>", desc = "Find files" },
@@ -83,7 +92,17 @@ function M.config()
     { "<leader>fw", "<cmd>LiveGrepGitRoot<cr>", desc = "Find Words" },
     {
       "<C-TAB>",
-      "<cmd>Telescope buffers previewer=false only_cwd=true sort_mru=true ignore_current_buffer=true<cr>",
+      function()
+        if switch_to_mru_buffer() then
+          return
+        end
+        require("telescope.builtin").buffers({
+          previewer = false,
+          only_cwd = true,
+          sort_mru = true,
+          ignore_current_buffer = true,
+        })
+      end,
       desc = "Find buffers",
     },
   })

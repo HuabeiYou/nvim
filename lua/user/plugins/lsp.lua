@@ -8,7 +8,7 @@ local M = {
     "b0o/schemastore.nvim",
     { "j-hui/fidget.nvim", opts = {
       progress = {
-        suppress_on_insert = false,
+        suppress_on_insert = true,
       },
     } },
   },
@@ -38,12 +38,13 @@ function M.config()
       "pyright",
       "ruff",
       "ts_ls",
+      -- "copilot",
     },
     automatic_installation = {
       exclude = { "rust_analyzer" },
     },
     handlers = {
-      function(server_name) -- default handler (optional)
+      function(server_name)
         local opt = {
           capabilities = M.common_capabilities(),
         }
@@ -60,6 +61,24 @@ function M.config()
       end,
     },
   })
+
+  -- -- MANUAL SETUP FOR COPILOT
+  -- local node_path = os.getenv("HOME") .. "/Library/Application Support/fnm/node-versions/v22.21.1/installation/bin/node"
+  -- local copilot_server_path = vim.fn.stdpath("data")
+  --   .. "/mason/packages/copilot-language-server/node_modules/.bin/copilot-language-server"
+  -- vim.lsp.config("copilot", {
+  --   capabilities = M.common_capabilities(),
+  --   cmd = {
+  --     node_path,
+  --     copilot_server_path,
+  --     "--stdio",
+  --   },
+  --   settings = {
+  --     telemetry = {
+  --       telemetryLevel = "off",
+  --     },
+  --   },
+  -- })
   vim.keymap.set("n", "gl", vim.diagnostic.open_float, {
     desc = "Show diagnostic in float window",
   })

@@ -55,8 +55,6 @@ function M.config()
     { "<leader>Ts", "<cmd>lua require('neotest').run.stop()<cr>", desc = "Test Stop" },
     { "<leader>Tt", "<cmd>lua require'neotest'.run.run()<cr>", desc = "Test Nearest" },
     { "<leader>Z", group = "ZK" },
-    { "<leader>a", group = "AI" },
-    { "<leader>aa", "<cmd>NeoAI<CR>", desc = "Toggle Chat Window" },
     { "<leader>b", group = "Buffers" },
     { "<leader>bb", "<cmd>Telescope buffers previewer=false only_cwd=true<cr>", desc = "List Buffers" },
     { "<leader>bd", "<cmd>bdelete<cr>", desc = "Delete Buffer" },
