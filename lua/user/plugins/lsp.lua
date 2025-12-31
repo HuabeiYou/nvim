@@ -2,9 +2,8 @@ local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
     "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    "hrsh7th/cmp-nvim-lsp",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    "folke/neodev.nvim",
     "b0o/schemastore.nvim",
     { "j-hui/fidget.nvim", opts = {
       progress = {
@@ -23,62 +22,35 @@ end
 
 function M.config()
   require("mason").setup({})
-  require("mason-lspconfig").setup({
-    ensure_installed = {
-      "lua_ls",
-      "cssls",
-      "clangd",
-      "html",
-      "bashls",
-      "lemminx",
-      "jsonls",
-      "yamlls",
-      "marksman",
-      "gopls",
-      "pyright",
-      "ruff",
-      "ts_ls",
-      -- "copilot",
-    },
-    automatic_installation = {
-      exclude = { "rust_analyzer" },
-    },
-    handlers = {
-      function(server_name)
-        local opt = {
-          capabilities = M.common_capabilities(),
-        }
-        local require_ok, settings = pcall(require, "user.lspsettings." .. server_name)
-        if require_ok then
-          opt = vim.tbl_deep_extend("force", opt, settings)
-        end
+  local servers = {
+    "lua_ls",
+    "cssls",
+    "clangd",
+    "html",
+    "bashls",
+    "lemminx",
+    "jsonls",
+    "yamlls",
+    "marksman",
+    "gopls",
+    "pyright",
+    "ruff",
+    "ts_ls",
+    "copilot",
+  }
 
-        if server_name == "lua_ls" then
-          require("neodev").setup({})
-        end
+  for _, server_name in ipairs(servers) do
+    local opt = {
+      capabilities = M.common_capabilities(),
+    }
+    local require_ok, settings = pcall(require, "user.lspsettings." .. server_name)
+    if require_ok then
+      opt = vim.tbl_deep_extend("force", opt, settings)
+    end
+    vim.lsp.config(server_name, opt)
+    vim.lsp.enable(server_name)
+  end
 
-        require("lspconfig")[server_name].setup(opt)
-      end,
-    },
-  })
-
-  -- -- MANUAL SETUP FOR COPILOT
-  -- local node_path = os.getenv("HOME") .. "/Library/Application Support/fnm/node-versions/v22.21.1/installation/bin/node"
-  -- local copilot_server_path = vim.fn.stdpath("data")
-  --   .. "/mason/packages/copilot-language-server/node_modules/.bin/copilot-language-server"
-  -- vim.lsp.config("copilot", {
-  --   capabilities = M.common_capabilities(),
-  --   cmd = {
-  --     node_path,
-  --     copilot_server_path,
-  --     "--stdio",
-  --   },
-  --   settings = {
-  --     telemetry = {
-  --       telemetryLevel = "off",
-  --     },
-  --   },
-  -- })
   vim.keymap.set("n", "gl", vim.diagnostic.open_float, {
     desc = "Show diagnostic in float window",
   })

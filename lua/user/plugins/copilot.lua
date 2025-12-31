@@ -3,7 +3,7 @@ return {
   cmd = "Copilot",
   event = "InsertEnter", -- Loads the plugin when entering Insert mode
   keys = {
-    { "<C-y>", "<cmd>Copilot suggestion accept<cr>", desc = "Accept Copilot Suggestion", mode = { "i" } },
+    { "<Tab>", "<cmd>Copilot suggestion accept<cr>", desc = "Accept Copilot Suggestion", mode = { "i" } },
     { "<C-j>", "<cmd>Copilot suggestion next<cr>", desc = "Next Copilot Suggestion", mode = { "i" } },
     { "<C-k>", "<cmd>Copilot suggestion previous<cr>", desc = "Previous Copilot Suggestion", mode = { "i" } },
     { "<C-c>", "<cmd>Copilot suggestion dismiss<cr>", desc = "Dismiss Copilot Suggestion", mode = { "i" } },
