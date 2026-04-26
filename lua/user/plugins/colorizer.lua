@@ -20,6 +20,7 @@ function M.config()
       rgb_fn = true,
       hsl_fn = true,
       tailwind = "both",
+      suppress_deprecation = true,
     },
     buftypes = {},
   })

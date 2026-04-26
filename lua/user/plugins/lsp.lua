@@ -31,12 +31,11 @@ function M.config()
     "lemminx",
     "jsonls",
     "yamlls",
-    "marksman",
     "gopls",
     "pyright",
     "ruff",
     "ts_ls",
-    "copilot",
+    -- "copilot",
   }
 
   for _, server_name in ipairs(servers) do

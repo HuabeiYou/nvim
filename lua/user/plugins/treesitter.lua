@@ -17,7 +17,7 @@ local M = {
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = "all",
-        ignore_install = { "org" },
+        ignore_install = { "org", "markdown" },
         sync_install = false,
         highlight = {
           enable = true,

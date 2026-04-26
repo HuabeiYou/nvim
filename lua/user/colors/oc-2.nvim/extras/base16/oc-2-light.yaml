@@ -1,0 +1,25 @@
+system: "base16"
+name: "OC-2 Light"
+author: "Port of opencode's oc-2 theme"
+variant: "light"
+# Source palette:
+#   https://github.com/anomalyco/opencode/blob/dev/packages/ui/src/theme/themes/oc-2.json
+# Generated from the resolved oc-2 token table via
+#   scripts/generate-terminal-themes.lua
+palette:
+  base00: "F8F8F8"
+  base01: "F3F3F3"
+  base02: "EDEDED"
+  base03: "7a7a7a"
+  base04: "8F8F8F"
+  base05: "6F6F6F"
+  base06: "171717"
+  base07: "000000"
+  base08: "fc533a"
+  base09: "007b80"
+  base0A: "8a6f00"
+  base0B: "00ceb9"
+  base0C: "007b80"
+  base0D: "034cff"
+  base0E: "a753ae"
+  base0F: "ff8c00"

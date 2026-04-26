@@ -1,0 +1,25 @@
+system: "base16"
+name: "OC-2 Dark"
+author: "Port of opencode's oc-2 theme"
+variant: "dark"
+# Source palette:
+#   https://github.com/anomalyco/opencode/blob/dev/packages/ui/src/theme/themes/oc-2.json
+# Generated from the resolved oc-2 token table via
+#   scripts/generate-terminal-themes.lua
+palette:
+  base00: "1C1C1C"
+  base01: "232323"
+  base02: "282828"
+  base03: "8f8f8f"
+  base04: "707070"
+  base05: "A0A0A0"
+  base06: "EDEDED"
+  base07: "f7f7f7"
+  base08: "fc533a"
+  base09: "93e9f6"
+  base0A: "fcd53a"
+  base0B: "00ceb9"
+  base0C: "93e9f6"
+  base0D: "8cb0ff"
+  base0E: "edb2f1"
+  base0F: "fab283"

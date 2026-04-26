@@ -12,6 +12,7 @@ local M = {
           enabled = true,
         },
       },
+      nes = { enabled = true },
     },
     keys = {
       {

@@ -89,7 +89,7 @@ function M.config()
     { "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "Projects" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
     { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find the string under cursor" },
-    { "<leader>fw", "<cmd>LiveGrepGitRoot<cr>", desc = "Find Words" },
+    { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Find Words" },
     {
       "<C-TAB>",
       function()

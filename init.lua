@@ -23,7 +23,7 @@ local plugins_enabled = {
   "autopairs",
   "autotag",
   "harpoon",
-  "lualine",
+  -- "lualine",
   "dial",
   "telescope-extra",
   -- "rustaceanvim",
@@ -57,7 +57,7 @@ local plugins_enabled = {
   "nvim-surround",
   "dadbod",
   "tmux",
-  "rainbow-delimiters",
+  -- "rainbow-delimiters",
   "lazydev",
 }
 
@@ -100,7 +100,7 @@ require("lazy").setup({
   },
 })
 
-vim.lsp.set_log_level("WARN")
+vim.lsp.log.set_level("WARN")
 
 -- silent the deprecation warning
-vim.deprecate = function() end
+-- vim.deprecate = function() end
