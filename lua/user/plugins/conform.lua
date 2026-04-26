@@ -30,7 +30,7 @@ return {
       },
     })
     vim.keymap.set("", "<M-F>", function()
-      require("conform").format({ async = false, timeout_ms = 1000 }, function(err)
+      require("conform").format({ async = false, timeout_ms = 1000, lsp_format = "fallback" }, function(err)
         if not err then
           local mode = vim.api.nvim_get_mode().mode
           if vim.startswith(string.lower(mode), "v") then

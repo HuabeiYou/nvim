@@ -50,9 +50,9 @@ vim.opt.fillchars:append({
 })
 vim.g.python3_host_prog = os.getenv("HOME") .. "/.pyenv/versions/neovim-py/bin/python"
 
-vim.cmd("set whichwrap+=<,>,[,],h,l")
-vim.cmd([[set iskeyword+=-]])
-vim.cmd("set nofoldenable")
+vim.opt.whichwrap:append("<,>,[,],h,l")
+vim.opt.iskeyword:append("-")
+vim.opt.foldenable = false
 
 if vim.g.neovide then
   vim.g.neovide_theme = "auto"
@@ -68,10 +68,10 @@ if vim.g.neovide then
   vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
   vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
   vim.g.neovide_input_use_logo = 1
-  vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.keymap.set("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
+  vim.keymap.set("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.keymap.set("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.keymap.set("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
   vim.cmd([[cd ~/git]])
 end
 

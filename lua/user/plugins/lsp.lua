@@ -132,7 +132,7 @@ function M.config()
         require("conform").format({
           async = false, -- If the buffer is modified before the formatter completes, the formatting will be discarded.
           timeout_ms = 1000,
-          lsp_fallback = true,
+          lsp_format = "fallback",
           bufnr = ev.buf,
         })
       end, "Format")
@@ -173,16 +173,20 @@ function M.config()
   })
 
   local icons = require("user.icons")
-  local diagnostic_sign_values = {
-    { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-    { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-    { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-    { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
-  }
   vim.diagnostic.config({
     signs = {
-      active = true,
-      values = diagnostic_sign_values,
+      text = {
+        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
+        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+        [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
+      },
+      numhl = {
+        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+      },
     },
     virtual_text = false,
     update_in_insert = false,
@@ -198,9 +202,6 @@ function M.config()
     },
   })
 
-  for _, sign in ipairs(diagnostic_sign_values) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-  end
   -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
   -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
   -- require("lspconfig.ui.windows").default_options.border = "rounded"

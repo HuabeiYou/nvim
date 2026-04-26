@@ -89,18 +89,14 @@ function M.config()
   })
 
   local opts = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_set_keymap
 
-  keymap("n", "<m-r>", ":silent only | Jaq<cr>", opts)
+  vim.keymap.set("n", "<m-r>", ":silent only | Jaq<cr>", opts)
 
   vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "Jaq" },
     callback = function()
-      vim.cmd([[
-      nnoremap <silent> <buffer> <m-r> :close<CR>
-      " nnoremap <silent> <buffer> <m-r> <NOP>
-      set nobuflisted
-    ]])
+      vim.keymap.set("n", "<m-r>", "<Cmd>close<CR>", { buffer = true, silent = true })
+      vim.opt_local.buflisted = false
     end,
   })
 end

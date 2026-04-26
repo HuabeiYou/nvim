@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()
-    vim.cmd("set formatoptions-=cro")
+    vim.opt_local.formatoptions:remove({ "c", "r", "o" })
   end,
 })
 
@@ -21,10 +21,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "",
   },
   callback = function()
-    vim.cmd([[
-      nnoremap <silent> <buffer> q :close<CR>
-      set nobuflisted
-    ]])
+    vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = true, silent = true })
+    vim.opt_local.buflisted = false
   end,
 })
 
@@ -70,7 +68,7 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
     if luasnip.expand_or_jumpable() then
       -- ask maintainer for option to make this silent
       -- luasnip.unlink_current()
-      vim.cmd([[silent! lua require("luasnip").unlink_current()]])
+      pcall(luasnip.unlink_current)
     end
   end,
 })
@@ -78,13 +76,12 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 vim.api.nvim_create_autocmd("TermOpen", {
   pattern = { "term://*" },
   callback = function()
-    local opts = { noremap = true, silent = true }
-    vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
+    vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], { buffer = true, noremap = true, silent = true })
+    vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], { buffer = true, noremap = true, silent = true })
+    vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], { buffer = true, noremap = true, silent = true })
+    vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], { buffer = true, noremap = true, silent = true })
+    vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { buffer = true, noremap = true, silent = true })
+    vim.keymap.set("t", "jk", [[<C-\><C-n>]], { buffer = true, noremap = true, silent = true })
     vim.cmd([[startinsert]])
   end,
 })

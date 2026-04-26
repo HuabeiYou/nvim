@@ -44,7 +44,7 @@ function M.config()
     -- function to run on opening the terminal
     on_open = function(term)
       vim.cmd("startinsert!")
-      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", opts)
+      vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = term.bufnr, noremap = true, silent = true })
     end,
     -- function to run on closing the terminal
     on_close = function(term)
@@ -52,11 +52,9 @@ function M.config()
     end,
   })
 
-  function _lazygit_toggle()
+  vim.keymap.set("n", "<leader>gg", function()
     lazygit:toggle()
-  end
-
-  vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", opts)
+  end, opts)
 end
 
 return M
