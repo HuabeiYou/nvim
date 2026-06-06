@@ -8,9 +8,9 @@ local M = {}
 function M.get(c)
   return {
     -- Backdrop / editor area
-    Normal       = { fg = c.fg, bg = c.bg },
+    Normal       = { fg = c.fg_strong, bg = c.bg },
     NormalNC     = { fg = c.fg, bg = c.bg },
-    NormalFloat  = { fg = c.fg, bg = c.bg_float },
+    NormalFloat  = { fg = c.fg_strong, bg = c.bg_float },
     FloatBorder  = { fg = c.border_weak, bg = c.bg_float },
     FloatTitle   = { fg = c.fg_strong, bg = c.bg_float, bold = true },
     SignColumn   = { fg = c.fg_gutter, bg = c.bg },
@@ -27,7 +27,7 @@ function M.get(c)
     ErrorMsg     = { fg = c.error, bold = true },
     WarningMsg   = { fg = c.warning },
     MoreMsg      = { fg = c.cyan },
-    ModeMsg      = { fg = c.fg, bold = true },
+    ModeMsg      = { fg = c.fg_strong, bold = true },
     Question     = { fg = c.cyan },
     QuickFixLine = { bg = c.bg_highlight, bold = true },
 

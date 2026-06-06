@@ -80,8 +80,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
     vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], { buffer = true, noremap = true, silent = true })
     vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], { buffer = true, noremap = true, silent = true })
     vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], { buffer = true, noremap = true, silent = true })
-    vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { buffer = true, noremap = true, silent = true })
-    vim.keymap.set("t", "jk", [[<C-\><C-n>]], { buffer = true, noremap = true, silent = true })
+    vim.keymap.set("t", "<esc><esc>", [[<C-\><C-n>]], { buffer = true, noremap = true, silent = true })
+    -- vim.keymap.set("t", "jk", [[<C-\><C-n>]], { buffer = true, noremap = true, silent = true })
     vim.cmd([[startinsert]])
   end,
 })
