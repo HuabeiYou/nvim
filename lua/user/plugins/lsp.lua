@@ -20,6 +20,49 @@ function M.common_capabilities()
   return capabilities
 end
 
+function M.setup_lsp_commands()
+  local function create_command(name, callback, opts)
+    if vim.fn.exists(":" .. name) ~= 2 then
+      vim.api.nvim_create_user_command(name, callback, opts)
+    end
+  end
+
+  local function run_native_lsp(subcommand, args)
+    vim.cmd("lsp " .. subcommand .. (#args > 0 and (" " .. table.concat(args, " ")) or ""))
+  end
+
+  create_command("LspInfo", "checkhealth vim.lsp", {
+    desc = "Alias to :checkhealth vim.lsp",
+  })
+
+  create_command("LspLog", function()
+    vim.cmd.tabnew(vim.fn.fnameescape(vim.lsp.log.get_filename()))
+  end, {
+    desc = "Open the Nvim LSP client log",
+  })
+
+  create_command("LspStart", function(info)
+    run_native_lsp("enable", info.fargs)
+  end, {
+    desc = "Alias to :lsp enable",
+    nargs = "*",
+  })
+
+  create_command("LspStop", function(info)
+    run_native_lsp("disable", info.fargs)
+  end, {
+    desc = "Alias to :lsp disable",
+    nargs = "*",
+  })
+
+  create_command("LspRestart", function(info)
+    run_native_lsp("restart", info.fargs)
+  end, {
+    desc = "Alias to :lsp restart",
+    nargs = "*",
+  })
+end
+
 function M.config()
   require("mason").setup({})
   local servers = {
@@ -49,6 +92,7 @@ function M.config()
     vim.lsp.config(server_name, opt)
     vim.lsp.enable(server_name)
   end
+  M.setup_lsp_commands()
 
   vim.keymap.set("n", "gl", vim.diagnostic.open_float, {
     desc = "Show diagnostic in float window",

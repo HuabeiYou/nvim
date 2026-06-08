@@ -9,10 +9,6 @@ function M.config()
   vim.g.rustaceanvim = {
     tools = {},
     server = {
-      on_attach = function(client, bufnr)
-        lspconfig.on_attach(client, bufnr)
-      end,
-
       capabilities = lspconfig.common_capabilities(),
 
       settings = {
