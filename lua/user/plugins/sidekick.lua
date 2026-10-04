@@ -3,9 +3,6 @@ local M = {
     "folke/sidekick.nvim",
     cmd = "Sidekick",
     event = "VeryLazy",
-    dependencies = {
-      "zbirenbaum/copilot.lua",
-    },
     opts = {
       cli = {
         mux = {

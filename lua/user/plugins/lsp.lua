@@ -78,7 +78,7 @@ function M.config()
     "pyright",
     "ruff",
     "ts_ls",
-    -- "copilot",
+    "copilot",
   }
 
   for _, server_name in ipairs(servers) do
@@ -127,6 +127,27 @@ function M.config()
           desc = "LSP: " .. desc,
         })
       end
+
+      local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+      if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, ev.buf) then
+        vim.lsp.inline_completion.enable(true, { bufnr = ev.buf })
+        vim.keymap.set("i", "<Tab>", function()
+          if not vim.lsp.inline_completion.get() then
+            return "<Tab>"
+          end
+        end, {
+          buffer = ev.buf,
+          expr = true,
+          desc = "LSP: Accept inline completion",
+        })
+        map("i", "<C-j>", function()
+          vim.lsp.inline_completion.select({ count = 1 })
+        end, "Next inline completion")
+        map("i", "<C-k>", function()
+          vim.lsp.inline_completion.select({ count = -1 })
+        end, "Previous inline completion")
+      end
+
       -- Jump to the definition of the word under your cursor.
       --  This is where a variable was first declared, or where a function is defined, etc.
       --  To jump back, press <C-T>.

@@ -16,7 +16,6 @@ local plugins_enabled = {
   "conform",
   "lsp",
   "cmp",
-  "copilot",
   "sidekick",
   "telescope",
   "whichkey",
